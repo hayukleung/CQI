@@ -6,6 +6,7 @@
 gradle.properties
 .DS_Store
 /build
+/sql
 /D-clock-AndroidSystemUiTraining
 /Gordon-H-ImitationOfWechat
 /captures
