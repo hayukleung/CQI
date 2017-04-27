@@ -1,0 +1,29 @@
+<resources>
+  <string name="app_name">质检 DEMO</string>
+
+  <string name="category_01">汽车儿童安全坐椅</string>
+  <string name="category_02">汽油、柴油</string>
+  <string name="category_03">针织内衣、文胸</string>
+  <string name="category_04">消防器材</string>
+  <string name="category_05">家用燃气具</string>
+  <string name="category_06">玩具</string>
+  <string name="category_07">汽车轮胎</string>
+  <string name="category_08">电冰箱</string>
+  <string name="category_09">电线电缆</string>
+  <string name="category_10">润滑油、制动液</string>
+  <string name="category_11">婴幼儿食具</string>
+  <string name="category_12">童车</string>
+  <string name="category_13">电动自行车</string>
+  <string name="category_14">移动电源、USB插座</string>
+  <string name="category_15">儿童及婴幼儿服装</string>
+  <string name="category_16">人造板</string>
+  <string name="category_17">蓄电池</string>
+  <string name="category_18">文具</string>
+  <string name="category_19">鞋</string>
+  <string name="category_20">小家电</string>
+  <string name="category_21">纸制品</string>
+  <string name="category_22">箱包皮具</string>
+  <string name="category_23">洗涤用品</string>
+  <string name="category_24">家电</string>
+  <string name="category_25">服装</string>
+</resources>

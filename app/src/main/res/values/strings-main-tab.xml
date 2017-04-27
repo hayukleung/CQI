@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="tab_0">Trending</string>
+  <string name="tab_1">Most Stars</string>
+  <string name="tab_2">Profile</string>
+</resources>

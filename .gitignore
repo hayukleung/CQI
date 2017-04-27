@@ -1,0 +1,12 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+/gradle
+gradle.properties
+.DS_Store
+/build
+/D-clock-AndroidSystemUiTraining
+/Gordon-H-ImitationOfWechat
+/captures
+.externalNativeBuild

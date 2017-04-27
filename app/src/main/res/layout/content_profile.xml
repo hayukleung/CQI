@@ -1,0 +1,228 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?attr/actionBarSize"
+    >
+
+  <android.support.design.widget.TextInputLayout
+      android:id="@+id/text_input_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/xp2.0"
+      app:hintAnimationEnabled="true"
+      app:hintEnabled="true"
+      >
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/text_input_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:hint="关键字"
+        android:padding="@dimen/xp2.0"
+        android:textColorHint="@color/colorPrimary"
+        />
+  </android.support.design.widget.TextInputLayout>
+
+  <ScrollView
+      android:id="@+id/scroll_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_above="@+id/search"
+      android:layout_below="@+id/text_input_layout"
+      >
+    <RadioGroup
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_input_layout"
+        >
+
+      <RadioButton
+          android:id="@+id/category_01"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_01"
+          />
+
+      <RadioButton
+          android:id="@+id/category_02"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_02"
+          />
+
+      <RadioButton
+          android:id="@+id/category_03"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_03"
+          />
+
+      <RadioButton
+          android:id="@+id/category_04"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_04"
+          />
+
+      <RadioButton
+          android:id="@+id/category_05"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_05"
+          />
+
+      <RadioButton
+          android:id="@+id/category_06"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_06"
+          />
+
+      <RadioButton
+          android:id="@+id/category_07"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_07"
+          />
+
+      <RadioButton
+          android:id="@+id/category_08"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_08"
+          />
+
+      <RadioButton
+          android:id="@+id/category_09"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_09"
+          />
+
+      <RadioButton
+          android:id="@+id/category_10"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_10"
+          />
+
+      <RadioButton
+          android:id="@+id/category_11"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_11"
+          />
+
+      <RadioButton
+          android:id="@+id/category_12"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_12"
+          />
+
+      <RadioButton
+          android:id="@+id/category_13"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_13"
+          />
+
+      <RadioButton
+          android:id="@+id/category_14"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_14"
+          />
+
+      <RadioButton
+          android:id="@+id/category_15"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_15"
+          />
+
+      <RadioButton
+          android:id="@+id/category_16"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_16"
+          />
+
+      <RadioButton
+          android:id="@+id/category_17"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_17"
+          />
+
+      <RadioButton
+          android:id="@+id/category_18"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_18"
+          />
+
+      <RadioButton
+          android:id="@+id/category_19"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_19"
+          />
+
+      <RadioButton
+          android:id="@+id/category_20"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_20"
+          />
+
+      <RadioButton
+          android:id="@+id/category_21"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_21"
+          />
+
+      <RadioButton
+          android:id="@+id/category_22"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_22"
+          />
+
+      <RadioButton
+          android:id="@+id/category_23"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_23"
+          />
+
+      <RadioButton
+          android:id="@+id/category_24"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_24"
+          />
+
+      <RadioButton
+          android:id="@+id/category_25"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/category_25"
+          />
+    </RadioGroup>
+  </ScrollView>
+
+  <Button
+      android:id="@+id/search"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:text="查询"
+      />
+
+</RelativeLayout>
