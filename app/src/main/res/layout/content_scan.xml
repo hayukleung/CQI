@@ -10,4 +10,15 @@
       android:layout_height="match_parent"
       />
 
+  <ImageView
+      android:id="@+id/back"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
+      android:layout_marginStart="@dimen/xp5.0"
+      android:layout_marginTop="@dimen/xp5.0"
+      android:background="@drawable/bg_navigation_back"
+      android:padding="@dimen/xp5.0"
+      android:src="@drawable/ic_toolbar_back_black"
+      />
+
 </FrameLayout>

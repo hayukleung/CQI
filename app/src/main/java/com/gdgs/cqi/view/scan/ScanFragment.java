@@ -1,14 +1,11 @@
 package com.gdgs.cqi.view.scan;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.gdgs.cqi.R;
@@ -20,7 +17,6 @@ import com.gdgs.cqi.di.component.DaggerComponentScan;
 import com.gdgs.cqi.di.module.ActivityModule;
 import com.gdgs.cqi.model.GitHub;
 import com.gdgs.cqi.presenter.PresenterScan;
-import com.gdgs.cqi.view.Activities;
 import com.gdgs.cqi.view.TranslucentStatusCompat;
 import com.gdgs.cqi.view.UIUtils;
 import com.gdgs.cqi.view.XFragment;
@@ -42,10 +38,8 @@ import javax.inject.Inject;
 public class ScanFragment extends XFragment<GitHub, ContractScan.IPresenterScan>
     implements ScanView, HasComponent<ComponentScan>, ZBarScannerView.ResultHandler {
 
-  @BindView(R.id.scanner_view) ScannerView mScannerView;
-
   @Inject protected PresenterScan mPresenterScan;
-
+  @BindView(R.id.scanner_view) ScannerView mScannerView;
   private Runnable mRunnable;
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -117,27 +111,7 @@ public class ScanFragment extends XFragment<GitHub, ContractScan.IPresenterScan>
     // }
 
     Toolbar toolbar = getToolbar();
-    toolbar.setBackgroundColor(Color.WHITE);
-    toolbar.setNavigationIcon(R.drawable.ic_toolbar_back_black);
-    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        getActivity().onBackPressed();
-      }
-    });
-
-    UIUtils.setCenterTitle(getActivity(), toolbar, "Profile")
-        .setTextColor(getActivity().getResources().getColor(android.R.color.black));
-
-    TextView right = (TextView) getActivity().getLayoutInflater()
-        .inflate(R.layout.layout_toolbar_right_text, toolbar, false);
-    ((Toolbar.LayoutParams) right.getLayoutParams()).gravity = Gravity.END;
-    right.setText("扫码");
-    toolbar.addView(right);
-    right.setOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        Activities.startActivity(ScanFragment.this, ScanFragment.class);
-      }
-    });
+    toolbar.setVisibility(View.GONE);
   }
 
   @Override public void onDestroy() {
@@ -149,8 +123,8 @@ public class ScanFragment extends XFragment<GitHub, ContractScan.IPresenterScan>
     super.onActivityCreated(savedInstanceState);
   }
 
-  @OnClick({}) void onClick(View view) {
-
+  @OnClick({ R.id.back }) void onClick(View view) {
+    getActivity().onBackPressed();
   }
 
   @Override public void handleResult(Result rawResult) {

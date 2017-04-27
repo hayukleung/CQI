@@ -3,6 +3,7 @@ package com.gdgs.cqi.view.result;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -42,6 +43,8 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    UIUtils.requestStatusBarLight(this, true);
     getComponent().inject(this);
     mPresenterResult.attachView(this);
   }
@@ -85,6 +88,8 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
 
     mRecyclerView.setLayoutManager(
         new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+    mRecyclerView.addItemDecoration(
+        new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
     mRecyclerView.setAdapter(new ResultAdapter(mProductList));
   }
 

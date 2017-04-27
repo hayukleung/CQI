@@ -15,6 +15,8 @@
       android:paddingLeft="@dimen/xp5.0"
       android:paddingRight="@dimen/xp5.0"
       android:paddingTop="@dimen/xp2.0"
+      android:textSize="14sp"
+      android:textStyle="bold"
       />
 
   <TextView
@@ -26,6 +28,7 @@
       android:paddingLeft="@dimen/xp5.0"
       android:paddingRight="@dimen/xp5.0"
       android:paddingTop="@dimen/xp2.0"
+      android:textSize="12sp"
       />
 
   <TextView
@@ -37,5 +40,6 @@
       android:paddingLeft="@dimen/xp5.0"
       android:paddingRight="@dimen/xp5.0"
       android:paddingTop="@dimen/xp2.0"
+      android:textSize="12sp"
       />
 </LinearLayout>
