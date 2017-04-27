@@ -1,6 +1,6 @@
 package com.gdgs.cqi.contract;
 
-import com.gdgs.cqi.model.GitHub;
+import com.gdgs.cqi.model.Result;
 import com.gdgs.cqi.presenter.RXMVPPresenter;
 import com.hayukleung.mvp.lce.LCEView;
 
@@ -15,7 +15,7 @@ import com.hayukleung.mvp.lce.LCEView;
 
 public interface ContractResult {
 
-  public interface IViewResult extends LCEView<GitHub, IPresenterResult> {
+  public interface IViewResult extends LCEView<Result, IPresenterResult> {
 
   }
 

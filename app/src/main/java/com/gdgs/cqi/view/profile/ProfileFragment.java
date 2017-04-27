@@ -19,10 +19,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.gdgs.cqi.R;
-import com.gdgs.cqi.common.wrapper.XDao;
 import com.gdgs.cqi.contract.ContractProfile;
-import com.gdgs.cqi.database.Product;
-import com.gdgs.cqi.database.ProductDao;
 import com.gdgs.cqi.di.HasComponent;
 import com.gdgs.cqi.di.component.ComponentProfile;
 import com.gdgs.cqi.di.component.DaggerComponentProfile;
@@ -32,10 +29,9 @@ import com.gdgs.cqi.presenter.PresenterProfile;
 import com.gdgs.cqi.view.Activities;
 import com.gdgs.cqi.view.UIUtils;
 import com.gdgs.cqi.view.XFragment;
+import com.gdgs.cqi.view.result.ResultFragment;
 import com.gdgs.cqi.view.scan.ScanFragment;
-import java.util.List;
 import javax.inject.Inject;
-import org.greenrobot.greendao.query.QueryBuilder;
 
 /**
  * XGitHub
@@ -287,30 +283,9 @@ public class ProfileFragment extends XFragment<GitHub, ContractProfile.IPresente
   }
 
   @OnClick(R.id.search) public void onViewClicked() {
-    XDao xDao = XDao.getInstance(getActivity().getApplicationContext());
-    ProductDao productDao = xDao.getDaoSession().getProductDao();
-    QueryBuilder queryBuilder = productDao.queryBuilder();
-    queryBuilder.where(ProductDao.Properties.Category.eq(mIntCategory),
-        queryBuilder.or(
-            ProductDao.Properties.ReportCode.like(getStrKeyword()),
-            ProductDao.Properties.ProductName.like(getStrKeyword()),
-            ProductDao.Properties.ProducerName.like(getStrKeyword()),
-            ProductDao.Properties.ProducerAddress.like(getStrKeyword()),
-            ProductDao.Properties.Brand.like(getStrKeyword()),
-            ProductDao.Properties.Type.like(getStrKeyword()),
-            ProductDao.Properties.ProducerArea.like(getStrKeyword()),
-            ProductDao.Properties.ThirdPartPlatform.like(getStrKeyword()),
-            ProductDao.Properties.OnlineSellerWebsite.like(getStrKeyword()),
-            ProductDao.Properties.Seller.like(getStrKeyword()),
-            ProductDao.Properties.SellerAddress.like(getStrKeyword()),
-            ProductDao.Properties.UnqualifiedItem.like(getStrKeyword()),
-            ProductDao.Properties.Judge.like(getStrKeyword()),
-            ProductDao.Properties.Dealing.like(getStrKeyword())
-            ));
-    List<Product> result = queryBuilder.list();
-  }
-
-  private String getStrKeyword() {
-    return String.format("%%%s%%", mStrKeyword);
+    Bundle bundle = new Bundle();
+    bundle.putString("key", mStrKeyword);
+    bundle.putInt("category", mIntCategory);
+    Activities.startActivity(ProfileFragment.this, ResultFragment.class, bundle);
   }
 }

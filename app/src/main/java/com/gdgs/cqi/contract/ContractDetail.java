@@ -1,6 +1,6 @@
 package com.gdgs.cqi.contract;
 
-import com.gdgs.cqi.model.GitHub;
+import com.gdgs.cqi.model.Stub;
 import com.gdgs.cqi.presenter.RXMVPPresenter;
 import com.hayukleung.mvp.lce.LCEView;
 
@@ -15,7 +15,7 @@ import com.hayukleung.mvp.lce.LCEView;
 
 public interface ContractDetail {
 
-  public interface IViewDetail extends LCEView<GitHub, IPresenterDetail> {
+  public interface IViewDetail extends LCEView<Stub, IPresenterDetail> {
 
   }
 
