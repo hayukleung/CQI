@@ -1,6 +1,5 @@
 package com.gdgs.cqi.view.result;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -71,6 +70,11 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
         .build();
   }
 
+  @Override public void onResume() {
+    super.onResume();
+    onFilterSure();
+  }
+
   @Override protected int getContentView() {
     return R.layout.content_result;
   }
@@ -86,18 +90,29 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
     mRecyclerView.getAdapter().notifyDataSetChanged();
   }
 
+  @Override public void onFilterSure() {
+    mPresenterResult.query(getActivity(), mStrKeyword, mIntCategory,
+        bindUntilEvent(FragmentEvent.PAUSE));
+    mFilterLayout.setName(Category.CATEGORY.get(mIntCategory));
+    mFilterLayout.dismissCurrentFilter();
+  }
+
+  @Override public void onFilterCancel() {
+    mFilterLayout.dismissCurrentFilter();
+  }
+
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
     Toolbar toolbar = getToolbar();
     toolbar.setVisibility(View.GONE);
-    toolbar.setBackgroundColor(Color.WHITE);
-    toolbar.setNavigationIcon(R.drawable.ic_toolbar_back_black);
-    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        getActivity().onBackPressed();
-      }
-    });
+    // toolbar.setBackgroundColor(Color.WHITE);
+    // toolbar.setNavigationIcon(R.drawable.ic_toolbar_back_black);
+    // toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+    // @Override public void onClick(View v) {
+    // getActivity().onBackPressed();
+    // }
+    // });
 
     UIUtils.setCenterTitle(getActivity(), toolbar, "搜索结果")
         .setTextColor(getActivity().getResources().getColor(android.R.color.black));
@@ -111,6 +126,7 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
 
       @Override public void afterTextChanged(Editable s) {
         mStrKeyword = s.toString();
+        onFilterSure();
       }
     });
 
@@ -131,7 +147,10 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
       @Override public boolean onTouch(View v, MotionEvent event) {
         if (MotionEvent.ACTION_DOWN == event.getAction()
             || MotionEvent.ACTION_MOVE == event.getAction()) {
-          CommonUtils.hideInputMethod(getActivity(), getActivity().getCurrentFocus());
+          View focus = getActivity().getCurrentFocus();
+          if (null != focus) {
+            CommonUtils.hideInputMethod(getActivity(), getActivity().getCurrentFocus());
+          }
         }
         return false;
       }
@@ -156,16 +175,5 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
 
   @OnClick({ R.id.search }) void onClick() {
     onFilterSure();
-  }
-
-  @Override public void onFilterSure() {
-    mPresenterResult.query(getActivity(), mStrKeyword, mIntCategory,
-        bindUntilEvent(FragmentEvent.PAUSE));
-    mFilterLayout.setName(Category.CATEGORY.get(mIntCategory));
-    mFilterLayout.dismissCurrentFilter();
-  }
-
-  @Override public void onFilterCancel() {
-    mFilterLayout.dismissCurrentFilter();
   }
 }

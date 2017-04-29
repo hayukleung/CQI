@@ -9,15 +9,15 @@
 
   <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="?attr/actionBarSize"
+      android:background="@color/colorPrimary"
       android:orientation="horizontal"
       >
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text_input_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:padding="@dimen/xp2.0"
+        android:layout_gravity="center_vertical"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
         >
@@ -27,25 +27,21 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:background="@null"
+          android:gravity="center_vertical"
           android:hint="关键字"
-          android:padding="@dimen/xp2.0"
+          android:maxLines="1"
+          android:paddingLeft="@dimen/xp4.0"
           android:textColorHint="@color/colorPrimary"
           />
     </android.support.design.widget.TextInputLayout>
-
-    <Button
-        android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:text="搜索"
-        />
   </LinearLayout>
 
   <com.gdgs.cqi.widget.FilterLayout
       android:id="@+id/filter_layout"
       android:layout_width="match_parent"
-      android:layout_height="@dimen/xp15.0"
+      android:layout_height="@dimen/xp10.0"
+      android:layout_marginTop="1dp"
+      android:background="#FFF0F0F0"
       />
 
   <FrameLayout
@@ -62,6 +58,17 @@
         android:id="@+id/filter_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/search"
+        android:layout_width="@dimen/xp15.0"
+        android:layout_height="@dimen/xp15.0"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/xp10.0"
+        android:layout_marginEnd="@dimen/xp10.0"
+        android:src="@drawable/ic_search_white_24dp"
+        android:visibility="gone"
         />
   </FrameLayout>
 </LinearLayout>

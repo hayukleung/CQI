@@ -112,6 +112,11 @@ public class PresenterResult extends ContractResult.IPresenterResult {
   }
 
   private String getStrKeyword(String strKeyword) {
+    // char[] words = strKeyword.toCharArray();
+    // String like = "";
+    // for (char word : words) {
+    // like += String.format("%%%s%%", word);
+    // }
     return String.format("%%%s%%", strKeyword);
   }
 }

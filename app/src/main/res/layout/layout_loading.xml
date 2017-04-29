@@ -5,7 +5,15 @@
     android:layout_height="match_parent"
     >
 
-  <com.gdgs.cqi.widget.ShyaringanView
+  <!--<com.gdgs.cqi.widget.ShyaringanView-->
+  <!--android:id="@+id/progress"-->
+  <!--android:visibility="gone"-->
+  <!--android:layout_width="@dimen/xp20.0"-->
+  <!--android:layout_height="@dimen/xp20.0"-->
+  <!--android:layout_centerInParent="true"-->
+  <!--/>-->
+
+  <ProgressBar
       android:id="@+id/progress"
       android:layout_width="@dimen/xp20.0"
       android:layout_height="@dimen/xp20.0"

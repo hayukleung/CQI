@@ -23,9 +23,14 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailHolder> {
     mProduct = product;
   }
 
+  public Product getProduct() {
+    return mProduct;
+  }
+
   @Override public DetailHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     return new DetailHolder(
-        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_detail, parent, false));
+        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_detail, parent, false),
+        mProduct);
   }
 
   @Override public void onBindViewHolder(DetailHolder holder, int position) {

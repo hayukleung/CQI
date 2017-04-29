@@ -11,4 +11,13 @@
       android:layout_height="match_parent"
       />
 
+  <android.support.design.widget.FloatingActionButton
+      android:id="@+id/save"
+      android:layout_width="@dimen/xp15.0"
+      android:layout_height="@dimen/xp15.0"
+      android:layout_gravity="bottom|end"
+      android:layout_marginBottom="@dimen/xp10.0"
+      android:layout_marginEnd="@dimen/xp10.0"
+      android:src="@drawable/ic_done_white_24dp"
+      />
 </FrameLayout>
