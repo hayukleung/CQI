@@ -16,6 +16,7 @@ public class Category extends BaseBean {
 
   public static final SparseArray<String> CATEGORY = new SparseArray<>(25);
   static {
+    CATEGORY.put(0, "全部类别");
     CATEGORY.put(1, "汽车儿童安全坐椅");
     CATEGORY.put(2, "汽油、柴油");
     CATEGORY.put(3, "针织内衣、文胸");

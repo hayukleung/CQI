@@ -63,6 +63,7 @@ public class DetailFragment extends XFragment<Product, ContractDetail.IPresenter
     super.onViewCreated(view, savedInstanceState);
 
     Toolbar toolbar = getToolbar();
+    toolbar.setVisibility(View.VISIBLE);
     toolbar.setBackgroundColor(Color.WHITE);
     toolbar.setNavigationIcon(R.drawable.ic_toolbar_back_black);
     toolbar.setNavigationOnClickListener(new View.OnClickListener() {

@@ -11,10 +11,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.gdgs.cqi.R;
+import com.gdgs.cqi.common.CommonUtils;
 import com.gdgs.cqi.contract.ContractResult;
 import com.gdgs.cqi.database.Category;
 import com.gdgs.cqi.database.Product;
@@ -112,7 +114,6 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
       }
     });
 
-    mFilterLayout.setName("类别");
     mFilterLayout.setOnSelectedListener(new FilterLayout.OnSelectedListener() {
       @Override public void onSelected(String tag) {
         // TODO
@@ -126,6 +127,15 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
     mRecyclerView.addItemDecoration(
         new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
     mRecyclerView.setAdapter(new ResultAdapter(this, mProductList));
+    mRecyclerView.setOnTouchListener(new View.OnTouchListener() {
+      @Override public boolean onTouch(View v, MotionEvent event) {
+        if (MotionEvent.ACTION_DOWN == event.getAction()
+            || MotionEvent.ACTION_MOVE == event.getAction()) {
+          CommonUtils.hideInputMethod(getActivity(), getActivity().getCurrentFocus());
+        }
+        return false;
+      }
+    });
   }
 
   @Override public void onDestroy() {

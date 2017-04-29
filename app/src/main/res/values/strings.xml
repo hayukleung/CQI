@@ -1,6 +1,7 @@
 <resources>
   <string name="app_name">质检 DEMO</string>
 
+  <string name="category_00">全部类别</string>
   <string name="category_01">汽车儿童安全坐椅</string>
   <string name="category_02">汽油、柴油</string>
   <string name="category_03">针织内衣、文胸</string>

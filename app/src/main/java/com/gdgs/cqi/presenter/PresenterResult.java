@@ -43,21 +43,38 @@ public class PresenterResult extends ContractResult.IPresenterResult {
         ProductDao productDao = xDao.getDaoSession().getProductDao();
         QueryBuilder queryBuilder = productDao.queryBuilder();
         String strKeywordLike = getStrKeyword(strKeyword);
-        queryBuilder.where(ProductDao.Properties.Category.eq(intCategory),
-            queryBuilder.or(ProductDao.Properties.ReportCode.like(strKeywordLike),
-                ProductDao.Properties.ProductName.like(strKeywordLike),
-                ProductDao.Properties.ProducerName.like(strKeywordLike),
-                ProductDao.Properties.ProducerAddress.like(strKeywordLike),
-                ProductDao.Properties.Brand.like(strKeywordLike),
-                ProductDao.Properties.Type.like(strKeywordLike),
-                ProductDao.Properties.ProducerArea.like(strKeywordLike),
-                ProductDao.Properties.ThirdPartPlatform.like(strKeywordLike),
-                ProductDao.Properties.OnlineSellerWebsite.like(strKeywordLike),
-                ProductDao.Properties.Seller.like(strKeywordLike),
-                ProductDao.Properties.SellerAddress.like(strKeywordLike),
-                ProductDao.Properties.UnqualifiedItem.like(strKeywordLike),
-                ProductDao.Properties.Judge.like(strKeywordLike),
-                ProductDao.Properties.Dealing.like(strKeywordLike)));
+        if (0 == intCategory) {
+          queryBuilder.where(queryBuilder.or(ProductDao.Properties.ReportCode.like(strKeywordLike),
+              ProductDao.Properties.ProductName.like(strKeywordLike),
+              ProductDao.Properties.ProducerName.like(strKeywordLike),
+              ProductDao.Properties.ProducerAddress.like(strKeywordLike),
+              ProductDao.Properties.Brand.like(strKeywordLike),
+              ProductDao.Properties.Type.like(strKeywordLike),
+              ProductDao.Properties.ProducerArea.like(strKeywordLike),
+              ProductDao.Properties.ThirdPartPlatform.like(strKeywordLike),
+              ProductDao.Properties.OnlineSellerWebsite.like(strKeywordLike),
+              ProductDao.Properties.Seller.like(strKeywordLike),
+              ProductDao.Properties.SellerAddress.like(strKeywordLike),
+              ProductDao.Properties.UnqualifiedItem.like(strKeywordLike),
+              ProductDao.Properties.Judge.like(strKeywordLike),
+              ProductDao.Properties.Dealing.like(strKeywordLike)));
+        } else {
+          queryBuilder.where(ProductDao.Properties.Category.eq(intCategory),
+              queryBuilder.or(ProductDao.Properties.ReportCode.like(strKeywordLike),
+                  ProductDao.Properties.ProductName.like(strKeywordLike),
+                  ProductDao.Properties.ProducerName.like(strKeywordLike),
+                  ProductDao.Properties.ProducerAddress.like(strKeywordLike),
+                  ProductDao.Properties.Brand.like(strKeywordLike),
+                  ProductDao.Properties.Type.like(strKeywordLike),
+                  ProductDao.Properties.ProducerArea.like(strKeywordLike),
+                  ProductDao.Properties.ThirdPartPlatform.like(strKeywordLike),
+                  ProductDao.Properties.OnlineSellerWebsite.like(strKeywordLike),
+                  ProductDao.Properties.Seller.like(strKeywordLike),
+                  ProductDao.Properties.SellerAddress.like(strKeywordLike),
+                  ProductDao.Properties.UnqualifiedItem.like(strKeywordLike),
+                  ProductDao.Properties.Judge.like(strKeywordLike),
+                  ProductDao.Properties.Dealing.like(strKeywordLike)));
+        }
         Result result = new Result();
         result.setProductList(queryBuilder.list());
         e.onNext(result);

@@ -3,12 +3,14 @@ package com.gdgs.cqi.view.result;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import butterknife.BindView;
 import com.gdgs.cqi.R;
+import com.gdgs.cqi.common.CommonUtils;
 import com.gdgs.cqi.view.XFragment;
 
 /**
@@ -22,6 +24,7 @@ import com.gdgs.cqi.view.XFragment;
 
 public class FilterFragment extends XFragment {
 
+  @BindView(R.id.category_00) RadioButton mCategory00;
   @BindView(R.id.category_01) RadioButton mCategory01;
   @BindView(R.id.category_02) RadioButton mCategory02;
   @BindView(R.id.category_03) RadioButton mCategory03;
@@ -57,6 +60,10 @@ public class FilterFragment extends XFragment {
       @Override public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
         int pre = ((ResultFragment) getParentFragment()).mIntCategory;
         switch (checkedId) {
+          case R.id.category_00: {
+            ((ResultFragment) getParentFragment()).mIntCategory = 0;
+            break;
+          }
           case R.id.category_01: {
             ((ResultFragment) getParentFragment()).mIntCategory = 1;
             break;
@@ -161,6 +168,124 @@ public class FilterFragment extends XFragment {
         if (pre != ((ResultFragment) getParentFragment()).mIntCategory) {
           ((FilterInterface) getParentFragment()).onFilterSure();
         }
+      }
+    });
+
+    switch (((ResultFragment) getParentFragment()).mIntCategory) {
+      case 0: {
+        mCategory00.setChecked(true);
+        break;
+      }
+      case 1: {
+        mCategory01.setChecked(true);
+        break;
+      }
+      case 2: {
+        mCategory02.setChecked(true);
+        break;
+      }
+      case 3: {
+        mCategory03.setChecked(true);
+        break;
+      }
+      case 4: {
+        mCategory04.setChecked(true);
+        break;
+      }
+      case 5: {
+        mCategory05.setChecked(true);
+        break;
+      }
+      case 6: {
+        mCategory06.setChecked(true);
+        break;
+      }
+      case 7: {
+        mCategory07.setChecked(true);
+        break;
+      }
+      case 8: {
+        mCategory08.setChecked(true);
+        break;
+      }
+      case 9: {
+        mCategory09.setChecked(true);
+        break;
+      }
+      case 10: {
+        mCategory10.setChecked(true);
+        break;
+      }
+      case 11: {
+        mCategory11.setChecked(true);
+        break;
+      }
+      case 12: {
+        mCategory12.setChecked(true);
+        break;
+      }
+      case 13: {
+        mCategory13.setChecked(true);
+        break;
+      }
+      case 14: {
+        mCategory14.setChecked(true);
+        break;
+      }
+      case 15: {
+        mCategory15.setChecked(true);
+        break;
+      }
+      case 16: {
+        mCategory16.setChecked(true);
+        break;
+      }
+      case 17: {
+        mCategory17.setChecked(true);
+        break;
+      }
+      case 18: {
+        mCategory18.setChecked(true);
+        break;
+      }
+      case 19: {
+        mCategory19.setChecked(true);
+        break;
+      }
+      case 20: {
+        mCategory20.setChecked(true);
+        break;
+      }
+      case 21: {
+        mCategory21.setChecked(true);
+        break;
+      }
+      case 22: {
+        mCategory22.setChecked(true);
+        break;
+      }
+      case 23: {
+        mCategory23.setChecked(true);
+        break;
+      }
+      case 24: {
+        mCategory24.setChecked(true);
+        break;
+      }
+      case 25: {
+        mCategory25.setChecked(true);
+        break;
+      }
+    }
+
+    mScrollView.setOnTouchListener(new View.OnTouchListener() {
+      @Override public boolean onTouch(View v, MotionEvent event) {
+        if (MotionEvent.ACTION_DOWN == event.getAction()
+            || MotionEvent.ACTION_MOVE == event.getAction()) {
+          CommonUtils.hideInputMethod(getActivity(),
+              ((ResultFragment) getParentFragment()).mTextInputLayout);
+        }
+        return false;
       }
     });
   }
