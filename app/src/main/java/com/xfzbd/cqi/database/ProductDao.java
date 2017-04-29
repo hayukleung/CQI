@@ -52,26 +52,26 @@ public class ProductDao extends AbstractDao<Product, Long> {
         db.execSQL(sql);
     }
 
-    @Override public Product readEntity(Cursor cursor, int offset) {
-      Product entity = new Product( //
-          cursor.getLong(offset + 0), // id
-          cursor.getInt(offset + 1), // category
-          cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // reportCode
-          cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // productName
-          cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // producerName
-          cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // producerAddress
-          cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // brand
-          cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // type
-          cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // producerArea
-          cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // thirdPartPlatform
-          cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // onlineSellerWebsite
-          cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // seller
-          cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // sellerAddress
-          cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // unqualifiedItem
-          cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // judge
-          cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15) // dealing
-      );
-      return entity;
+  @Override public Product readEntity(Cursor cursor, int offset) {
+    Product entity = new Product( //
+        cursor.getLong(offset + 0), // id
+        cursor.getInt(offset + 1), // category
+        cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // reportCode
+        cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // productName
+        cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // producerName
+        cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // producerAddress
+        cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // brand
+        cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // type
+        cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // producerArea
+        cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // thirdPartPlatform
+        cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // onlineSellerWebsite
+        cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // seller
+        cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // sellerAddress
+        cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // unqualifiedItem
+        cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // judge
+        cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15) // dealing
+    );
+    return entity;
     }
 
   @Override public Long readKey(Cursor cursor, int offset) {

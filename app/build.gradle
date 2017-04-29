@@ -7,7 +7,7 @@ android {
   buildToolsVersion "25.0.2"
   defaultConfig {
     applicationId "com.xfzbd.cqi"
-    minSdkVersion 16
+    minSdkVersion 17
     targetSdkVersion 25
     versionCode 1
     versionName "1.0"
@@ -107,7 +107,7 @@ dependencies {
   // 'recyclerview-v7' library bindings:
   compile 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:2.0.0'
   // 'leanback-v17' library bindings:
-  // compile 'com.jakewharton.rxbinding2:rxbinding-leanback-v17:2.0.0'
+  compile 'com.jakewharton.rxbinding2:rxbinding-leanback-v17:2.0.0'
   // my own libraries
   compile 'com.github.hayukleung:absolute-screen-match:1.0.0'
   compile project(':mvp')
