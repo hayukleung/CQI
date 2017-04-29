@@ -26,3 +26,24 @@
 
 # okhttp3
 -dontwarn okhttp3.**
+
+-dontwarn **
+
+-keep class com.xfzbd.cqi.model.BaseBean
+-keepclassmembers class com.xfzbd.cqi.model.BaseBean { *; }
+-keep class * extends com.xfzbd.cqi.model.BaseBean
+-keepclassmembers class * extends com.xfzbd.cqi.model.BaseBean { *; }
+
+# gradle-retrolambda (https://github.com/evant/gradle-retrolambda)
+-dontwarn java.lang.invoke.*
+
+# sqlcipher
+-keep class net.sqlcipher.** { *; }
+
+-keepclassmembers class * extends de.greenrobot.dao.AbstractDao {
+    public static java.lang.String TABLENAME;
+}
+-keep class **$Properties
+
+# mina
+-keep class org.apache.mina.** { *; }

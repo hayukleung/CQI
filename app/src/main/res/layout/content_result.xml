@@ -36,7 +36,7 @@
     </android.support.design.widget.TextInputLayout>
   </LinearLayout>
 
-  <com.gdgs.cqi.widget.FilterLayout
+  <com.xfzbd.cqi.widget.FilterLayout
       android:id="@+id/filter_layout"
       android:layout_width="match_parent"
       android:layout_height="@dimen/xp10.0"

@@ -6,39 +6,60 @@ android {
   compileSdkVersion 25
   buildToolsVersion "25.0.2"
   defaultConfig {
-    applicationId "com.gdgs.cqi"
-    minSdkVersion 21
+    applicationId "com.xfzbd.cqi"
+    minSdkVersion 16
     targetSdkVersion 25
     versionCode 1
     versionName "1.0"
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    // testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     multiDexEnabled true
   }
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+  signingConfigs {
+    cqi {
+      keyAlias "${KEY_ALIAS}"
+      keyPassword "${KEY_PASSWORD}"
+      storeFile file('./cqi.jks')
+      storePassword "${KEY_STORE_PASSWORD}"
     }
   }
-  configurations.all {
-    resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
+
+  buildTypes {
+    release {
+      minifyEnabled true
+      shrinkResources true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      signingConfig signingConfigs.cqi
+    }
+    debug {
+      minifyEnabled false
+      shrinkResources false
+    }
+  }
+  // configurations.all {
+  // resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
+  // }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_7
+    targetCompatibility JavaVersion.VERSION_1_7
   }
 }
 
 greendao {
   schemaVersion 1
-  daoPackage 'com.gdgs.cqi.database'
+  daoPackage 'com.xfzbd.cqi.database'
   targetGenDir 'src/main/java'
 }
 
 dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
   // test libraries
-  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-    exclude group: 'com.android.support', module: 'support-annotations'
-  })
-  testCompile 'junit:junit:4.12'
+  // androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+  // exclude group: 'com.android.support', module: 'support-annotations'
+  // })
+  // testCompile 'junit:junit:4.12'
   // google android libraries
   compile 'com.android.support:appcompat-v7:25.3.0'
   compile 'com.android.support:design:25.3.1'
@@ -49,7 +70,7 @@ dependencies {
   compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
   compile 'com.squareup.retrofit2:converter-gson:2.2.0'
   compile 'com.squareup.okhttp3:okhttp:3.6.0'
-  testCompile 'com.squareup.okhttp3:mockwebserver:3.6.0'
+  // testCompile 'com.squareup.okhttp3:mockwebserver:3.6.0'
   compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
   compile 'com.google.dagger:dagger:2.10'
   annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
@@ -60,9 +81,9 @@ dependencies {
   compile 'org.greenrobot:greendao-generator:3.2.2'
   debugCompile 'im.dino:dbinspector:3.4.1@aar'
   compile 'com.orhanobut:logger:1.15'
-  debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-  releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-  testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+  // debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+  // releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+  // testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
   // rxjava
   compile 'io.reactivex.rxjava2:rxjava:2.0.2'
   compile 'io.reactivex.rxjava2:rxandroid:2.0.0'
@@ -86,7 +107,7 @@ dependencies {
   // 'recyclerview-v7' library bindings:
   compile 'com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:2.0.0'
   // 'leanback-v17' library bindings:
-  compile 'com.jakewharton.rxbinding2:rxbinding-leanback-v17:2.0.0'
+  // compile 'com.jakewharton.rxbinding2:rxbinding-leanback-v17:2.0.0'
   // my own libraries
   compile 'com.github.hayukleung:absolute-screen-match:1.0.0'
   compile project(':mvp')
