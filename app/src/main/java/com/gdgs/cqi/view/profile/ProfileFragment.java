@@ -129,12 +129,12 @@ public class ProfileFragment extends XFragment<GitHub, ContractProfile.IPresente
 
     Toolbar toolbar = getToolbar();
     toolbar.setBackgroundColor(Color.WHITE);
-    toolbar.setNavigationIcon(R.drawable.ic_toolbar_back_black);
-    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-      @Override public void onClick(View v) {
-        getActivity().onBackPressed();
-      }
-    });
+    // toolbar.setNavigationIcon(R.drawable.ic_toolbar_back_black);
+    // toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+    // @Override public void onClick(View v) {
+    // getActivity().onBackPressed();
+    // }
+    // });
 
     UIUtils.setCenterTitle(getActivity(), toolbar, "Profile")
         .setTextColor(getActivity().getResources().getColor(android.R.color.black));

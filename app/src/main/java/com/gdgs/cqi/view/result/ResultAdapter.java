@@ -1,10 +1,14 @@
 package com.gdgs.cqi.view.result;
 
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import com.gdgs.cqi.R;
 import com.gdgs.cqi.database.Product;
+import com.gdgs.cqi.view.Activities;
+import com.gdgs.cqi.view.detail.DetailFragment;
 import java.util.List;
 
 /**
@@ -18,9 +22,11 @@ import java.util.List;
 
 public class ResultAdapter extends RecyclerView.Adapter<ResultHolder> {
 
+  private ResultFragment mResultFragment;
   private List<Product> mProductList;
 
-  public ResultAdapter(List<Product> productList) {
+  public ResultAdapter(ResultFragment resultFragment, List<Product> productList) {
+    mResultFragment = resultFragment;
     mProductList = productList;
   }
 
@@ -30,7 +36,14 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultHolder> {
   }
 
   @Override public void onBindViewHolder(ResultHolder holder, int position) {
-    Product product = mProductList.get(position);
+    final Product product = mProductList.get(position);
+    holder.root.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Product.class.getSimpleName(), product);
+        Activities.startActivity(mResultFragment, DetailFragment.class, bundle);
+      }
+    });
     holder.productName.setText(product.getProductName());
     holder.producerName.setText(product.getProducerName());
     holder.brand.setText(product.getBrand());

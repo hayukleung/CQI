@@ -18,6 +18,7 @@ import com.gdgs.cqi.R;
 
 public class ResultHolder extends RecyclerView.ViewHolder {
 
+  @BindView(R.id.root) View root;
   @BindView(R.id.product_name) TextView productName;
   @BindView(R.id.producer_name) TextView producerName;
   @BindView(R.id.brand) TextView brand;

@@ -90,7 +90,7 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
         new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
     mRecyclerView.addItemDecoration(
         new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-    mRecyclerView.setAdapter(new ResultAdapter(mProductList));
+    mRecyclerView.setAdapter(new ResultAdapter(this, mProductList));
   }
 
   @Override public void onDestroy() {

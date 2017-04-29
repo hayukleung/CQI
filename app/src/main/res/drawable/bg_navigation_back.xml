@@ -9,9 +9,11 @@
   <size
       android:height="40dp"
       android:width="40dp"/>
-  <gradient
-      android:endColor="#000000"
-      android:gradientRadius="40dp"
-      android:startColor="#FFFFFF"
-      android:type="radial"/>
+
+  <solid android:color="#22000000"/>
+  <!--<gradient-->
+  <!--android:endColor="#000000"-->
+  <!--android:gradientRadius="40dp"-->
+  <!--android:startColor="#FFFFFF"-->
+  <!--android:type="radial"/>-->
 </shape>
