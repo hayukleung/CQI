@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- 充电点半页面板的动画时间 -->
+  <integer name="anim_fragment_panel_duration">500</integer>
+  <!-- 退出activity动画时间 -->
+  <integer name="anim_activity_in_out_duration">300</integer>
+  <!-- 筛选面板动画时间 -->
+  <integer name="anim_filter_layout_in_out_duration">300</integer>
+</resources>

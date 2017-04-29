@@ -97,6 +97,7 @@ public abstract class XFragment<M extends BaseBean, P extends RXMVPPresenter> ex
     mUnbinder = ButterKnife.bind(this, mLayoutContent);
 
     mToolbar = (Toolbar) baseView.findViewById(R.id.toolbar);
+    mToolbar.setVisibility(View.GONE);
     // AppCompatActivity activity = (AppCompatActivity) getActivity();
     // activity.setSupportActionBar(mToolbar);
 

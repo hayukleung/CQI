@@ -14,7 +14,7 @@ import com.gdgs.cqi.common.wrapper.XLog;
 import com.gdgs.cqi.database.ProductDao;
 import com.gdgs.cqi.view.Activities;
 import com.gdgs.cqi.view.FullScreenActivity;
-import com.gdgs.cqi.view.profile.ProfileFragment;
+import com.gdgs.cqi.view.result.ResultFragment;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -84,7 +84,7 @@ public class WelcomeActivity extends FullScreenActivity {
       }
 
       @Override public void onFinish() {
-        Activities.startActivity(WelcomeActivity.this, ProfileFragment.class);
+        Activities.startActivity(WelcomeActivity.this, ResultFragment.class);
         finish();
       }
     };
