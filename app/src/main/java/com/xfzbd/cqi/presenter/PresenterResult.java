@@ -6,6 +6,7 @@ import com.xfzbd.cqi.common.wrapper.XLog;
 import com.xfzbd.cqi.contract.ContractResult;
 import com.xfzbd.cqi.database.ProductDao;
 import com.xfzbd.cqi.model.Result;
+import com.xfzbd.cqi.view.result.ResultView;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -86,12 +87,14 @@ public class PresenterResult extends ContractResult.IPresenterResult {
         .compose(lifecycleTransformer)
         .doOnSubscribe(new Consumer<Disposable>() {
           @Override public void accept(Disposable disposable) throws Exception {
-            getMVPView().showLoading();
+            // getMVPView().showLoading();
+            ((ResultView) getMVPView()).showQueryLoading();
           }
         })
         .doOnTerminate(new Action() {
           @Override public void run() throws Exception {
-            getMVPView().dismissLoading();
+            // getMVPView().dismissLoading();
+            ((ResultView) getMVPView()).stopQueryLoading();
           }
         })
         .subscribeWith(new DisposableObserver<Result>() {
@@ -102,11 +105,13 @@ public class PresenterResult extends ContractResult.IPresenterResult {
 
           @Override public void onError(Throwable e) {
             XLog.e(e);
-            getMVPView().dismissLoading();
+            // getMVPView().dismissLoading();
+            ((ResultView) getMVPView()).stopQueryLoading();
           }
 
           @Override public void onComplete() {
-            getMVPView().dismissLoading();
+            // getMVPView().dismissLoading();
+            ((ResultView) getMVPView()).stopQueryLoading();
           }
         });
   }

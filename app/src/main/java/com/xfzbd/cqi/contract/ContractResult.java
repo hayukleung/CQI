@@ -20,6 +20,5 @@ public interface ContractResult {
   }
 
   public abstract class IPresenterResult extends RXMVPPresenter<IViewResult> {
-
   }
 }

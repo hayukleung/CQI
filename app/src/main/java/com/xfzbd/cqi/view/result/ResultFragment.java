@@ -2,6 +2,7 @@ package com.xfzbd.cqi.view.result;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -47,6 +48,7 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
   public int mIntCategory = 0;
   @Inject protected PresenterResult mPresenterResult;
   @BindView(R.id.keywords) EditText mKeywords;
+  @BindView(R.id.swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
   @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
   @BindView(R.id.filter_layout) FilterLayout mFilterLayout;
   private String mStrKeyword = "";
@@ -154,6 +156,12 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
         return false;
       }
     });
+
+    mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+      @Override public void onRefresh() {
+        onFilterSure();
+      }
+    });
   }
 
   @Override public void onDestroy() {
@@ -170,6 +178,17 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
       return true;
     }
     return super.onBackPressed();
+  }
+
+  @Override public void showQueryLoading() {
+    if (mSwipeRefreshLayout.isRefreshing()) {
+      mSwipeRefreshLayout.setRefreshing(false);
+    }
+    mSwipeRefreshLayout.setRefreshing(true);
+  }
+
+  @Override public void stopQueryLoading() {
+    mSwipeRefreshLayout.setRefreshing(false);
   }
 
   @OnClick({ R.id.search }) void onClick() {

@@ -12,4 +12,8 @@ import com.xfzbd.cqi.contract.ContractResult;
  */
 
 public interface ResultView extends ContractResult.IViewResult {
+
+  void showQueryLoading();
+
+  void stopQueryLoading();
 }
