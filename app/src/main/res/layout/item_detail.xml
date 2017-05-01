@@ -5,199 +5,199 @@
     android:orientation="vertical"
     >
 
-  <android.support.design.widget.TextInputLayout
+  <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_report_code"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_report_code"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      android:text="@string/col_report_code"
+      style="@style/ItemTitle"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <EditText
+      android:id="@+id/col_report_code"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_product_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_product_name"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      style="@style/Item"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_producer_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_producer_name"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      android:text="@string/col_product_name"
+      style="@style/ItemTitle"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <EditText
+      android:id="@+id/col_product_name"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_producer_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_producer_address"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      style="@style/Item"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_brand"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_brand"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      android:text="@string/col_producer_name"
+      style="@style/ItemTitle"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <EditText
+      android:id="@+id/col_producer_name"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_type"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      style="@style/Item"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_producer_area"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_producer_area"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      android:text="@string/col_producer_address"
+      style="@style/ItemTitle"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <EditText
+      android:id="@+id/col_producer_address"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_third_part_platform"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_third_part_platform"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      style="@style/Item"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_online_seller"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_online_seller"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      android:text="@string/col_brand"
+      style="@style/ItemTitle"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <EditText
+      android:id="@+id/col_brand"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_seller"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_seller"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      style="@style/Item"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_seller_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_seller_address"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      android:text="@string/col_type"
+      style="@style/ItemTitle"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <EditText
+      android:id="@+id/col_type"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_unqualified_item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_unqualified_item"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      style="@style/Item"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_judge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_judge"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      android:text="@string/col_producer_area"
+      style="@style/ItemTitle"
+      />
 
-  <android.support.design.widget.TextInputLayout
+  <EditText
+      android:id="@+id/col_producer_area"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/xp1.0"
-      >
-    <android.support.design.widget.TextInputEditText
-        android:id="@+id/col_dealing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/col_dealing"
-        style="@style/Item"
-        />
-  </android.support.design.widget.TextInputLayout>
+      style="@style/Item"
+      />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/col_third_part_platform"
+      style="@style/ItemTitle"
+      />
+
+  <EditText
+      android:id="@+id/col_third_part_platform"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/Item"
+      />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/col_online_seller"
+      style="@style/ItemTitle"
+      />
+
+  <EditText
+      android:id="@+id/col_online_seller"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/Item"
+      />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/col_seller"
+      style="@style/ItemTitle"
+      />
+
+  <EditText
+      android:id="@+id/col_seller"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/Item"
+      />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/col_seller_address"
+      style="@style/ItemTitle"
+      />
+
+  <EditText
+      android:id="@+id/col_seller_address"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/Item"
+      />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/col_unqualified_item"
+      style="@style/ItemTitle"
+      />
+
+  <EditText
+      android:id="@+id/col_unqualified_item"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/Item"
+      />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/col_judge"
+      style="@style/ItemTitle"
+      />
+
+  <EditText
+      android:id="@+id/col_judge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/Item"
+      />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/col_dealing"
+      style="@style/ItemTitle"
+      />
+
+  <EditText
+      android:id="@+id/col_dealing"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/Item"
+      />
 </LinearLayout>

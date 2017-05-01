@@ -1,11 +1,11 @@
 package com.xfzbd.cqi.view.detail;
 
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.xfzbd.cqi.R;
@@ -22,20 +22,20 @@ import com.xfzbd.cqi.database.Product;
 
 public class DetailHolder extends RecyclerView.ViewHolder {
 
-  @BindView(R.id.col_report_code) TextInputEditText colReportCode;
-  @BindView(R.id.col_product_name) TextInputEditText colProductName;
-  @BindView(R.id.col_producer_name) TextInputEditText colProducerName;
-  @BindView(R.id.col_producer_address) TextInputEditText colProducerAddress;
-  @BindView(R.id.col_brand) TextInputEditText colBrand;
-  @BindView(R.id.col_type) TextInputEditText colType;
-  @BindView(R.id.col_producer_area) TextInputEditText colProducerArea;
-  @BindView(R.id.col_third_part_platform) TextInputEditText colThirdPartPlatform;
-  @BindView(R.id.col_online_seller) TextInputEditText colOnlineSeller;
-  @BindView(R.id.col_seller) TextInputEditText colSeller;
-  @BindView(R.id.col_seller_address) TextInputEditText colSellerAddress;
-  @BindView(R.id.col_unqualified_item) TextInputEditText colUnqualifiedItem;
-  @BindView(R.id.col_judge) TextInputEditText colJudge;
-  @BindView(R.id.col_dealing) TextInputEditText colDealing;
+  @BindView(R.id.col_report_code) EditText colReportCode;
+  @BindView(R.id.col_product_name) EditText colProductName;
+  @BindView(R.id.col_producer_name) EditText colProducerName;
+  @BindView(R.id.col_producer_address) EditText colProducerAddress;
+  @BindView(R.id.col_brand) EditText colBrand;
+  @BindView(R.id.col_type) EditText colType;
+  @BindView(R.id.col_producer_area) EditText colProducerArea;
+  @BindView(R.id.col_third_part_platform) EditText colThirdPartPlatform;
+  @BindView(R.id.col_online_seller) EditText colOnlineSeller;
+  @BindView(R.id.col_seller) EditText colSeller;
+  @BindView(R.id.col_seller_address) EditText colSellerAddress;
+  @BindView(R.id.col_unqualified_item) EditText colUnqualifiedItem;
+  @BindView(R.id.col_judge) EditText colJudge;
+  @BindView(R.id.col_dealing) EditText colDealing;
 
   private Product mProduct;
 
@@ -60,7 +60,7 @@ public class DetailHolder extends RecyclerView.ViewHolder {
     mProduct = product;
   }
 
-  private void avoidEmpty(final int index, final TextInputEditText edit) {
+  private void avoidEmpty(final int index, final EditText edit) {
     edit.addTextChangedListener(new TextWatcher() {
       @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 

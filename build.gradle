@@ -26,6 +26,11 @@ allprojects {
         url "http://dl.bintray.com/hayukleung/maven"
       }
     }
+    repositories {
+      maven {
+        url "https://jitpack.io"
+      }
+    }
   }
 }
 

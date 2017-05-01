@@ -283,7 +283,7 @@ public class FilterFragment extends XFragment {
         if (MotionEvent.ACTION_DOWN == event.getAction()
             || MotionEvent.ACTION_MOVE == event.getAction()) {
           CommonUtils.hideInputMethod(getActivity(),
-              ((ResultFragment) getParentFragment()).mTextInputLayout);
+              ((ResultFragment) getParentFragment()).mKeywords);
         }
         return false;
       }

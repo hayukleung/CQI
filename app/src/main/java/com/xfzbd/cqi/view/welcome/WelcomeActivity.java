@@ -1,12 +1,17 @@
 package com.xfzbd.cqi.view.welcome;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextPaint;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.xfzbd.cqi.App;
 import com.xfzbd.cqi.R;
 import com.xfzbd.cqi.common.wrapper.XDao;
@@ -19,6 +24,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.lang.ref.WeakReference;
+import java.util.Locale;
 
 /**
  * XGitHub
@@ -31,22 +38,62 @@ import java.io.Reader;
 
 public class WelcomeActivity extends FullScreenActivity {
 
+  private Handler mHandler;
+  private ProgressBar mProgressBar;
+  private TextView mPercentage;
+
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    mHandler = new WelcomeHandler(this);
 
     FrameLayout.LayoutParams layoutParams =
         new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.MATCH_PARENT);
     layoutParams.gravity = Gravity.CENTER;
-    ImageView background = new ImageView(this);
-    background.setImageResource(R.drawable.bg_welcome);
-    mContent.addView(background, layoutParams);
+    layoutParams.bottomMargin = getResources().getDimensionPixelSize(R.dimen.xp12_0);
+    TextView name = new TextView(this);
+    name.setText(R.string.app_name);
+    name.setTextColor(Color.BLACK);
+    name.setGravity(Gravity.CENTER);
+    name.setTextSize(getResources().getDimensionPixelSize(R.dimen.xp4_0));
+    name.setBackground(null);
+    TextPaint textPaint = name.getPaint();
+    textPaint.setFakeBoldText(true);
+    mContent.addView(name, layoutParams);
+
+    layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+        ViewGroup.LayoutParams.MATCH_PARENT);
+    layoutParams.gravity = Gravity.CENTER;
+    layoutParams.bottomMargin = 0;
+    mProgressBar = new ProgressBar(this);
+    mProgressBar.setMax(954);
+    mProgressBar.setVisibility(View.GONE);
+    mContent.addView(mProgressBar, layoutParams);
+
+    layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+        ViewGroup.LayoutParams.MATCH_PARENT);
+    layoutParams.gravity = Gravity.CENTER;
+    layoutParams.topMargin = getResources().getDimensionPixelSize(R.dimen.xp14_0);
+    layoutParams.bottomMargin = 0;
+    mPercentage = new TextView(this);
+    mPercentage.setTextColor(Color.BLACK);
+    mPercentage.setGravity(Gravity.CENTER);
+    mPercentage.setTextSize(getResources().getDimensionPixelSize(R.dimen.xp3_0));
+    mPercentage.setBackground(null);
+    textPaint = mPercentage.getPaint();
+    textPaint.setFakeBoldText(true);
+    mPercentage.setVisibility(View.GONE);
+
+    mContent.addView(mPercentage, layoutParams);
+
 
     new Thread(new Runnable() {
       @Override public void run() {
         XDao xDao = XDao.getInstance(WelcomeActivity.this.getApplicationContext());
         ProductDao productDao = xDao.getDaoSession().getProductDao();
         if (954 == productDao.count()) {
+          mHandler.sendEmptyMessageDelayed(0, 1000);
           return;
         }
 
@@ -70,24 +117,53 @@ public class WelcomeActivity extends FullScreenActivity {
             if (line.startsWith("insert")) {
               database.execSQL(line);
               XLog.e(++count + " lines inserted.");
+              Message message = new Message();
+              message.what = 1;
+              message.arg1 = count;
+              mHandler.sendMessage(message);
             }
           }
           br.close();
         } catch (IOException e) {
           e.printStackTrace();
+        } finally {
+          mHandler.sendEmptyMessage(0);
         }
       }
     }).start();
+  }
 
-    CountDownTimer timer = new CountDownTimer(2 * 1000, 2 * 1000) {
-      @Override public void onTick(long millisUntilFinished) {
-      }
+  @Override public void onBackPressed() {
+  }
 
-      @Override public void onFinish() {
-        Activities.startActivity(WelcomeActivity.this, ResultFragment.class);
-        finish();
+  private static class WelcomeHandler extends Handler {
+    private WeakReference<WelcomeActivity> mWelcomeActivityWeakReference;
+
+    WelcomeHandler(WelcomeActivity welcomeActivity) {
+      mWelcomeActivityWeakReference = new WeakReference<>(welcomeActivity);
+    }
+
+    @Override public void handleMessage(Message msg) {
+      WelcomeActivity welcomeActivity = mWelcomeActivityWeakReference.get();
+      if (null != welcomeActivity) {
+        switch (msg.what) {
+          case 0: {
+            welcomeActivity.mProgressBar.setVisibility(View.GONE);
+            welcomeActivity.mPercentage.setVisibility(View.GONE);
+            Activities.startActivity(welcomeActivity, ResultFragment.class);
+            welcomeActivity.finish();
+            break;
+          }
+          default: {
+            welcomeActivity.mProgressBar.setProgress(msg.arg1);
+            welcomeActivity.mProgressBar.setVisibility(View.VISIBLE);
+            welcomeActivity.mPercentage.setText(
+                String.format(Locale.CHINA, "%.2f%%", ((float) msg.arg1) / 954f * 100f));
+            welcomeActivity.mPercentage.setVisibility(View.VISIBLE);
+            break;
+          }
+        }
       }
-    };
-    timer.start();
+    }
   }
 }

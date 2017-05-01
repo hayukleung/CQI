@@ -2,8 +2,6 @@ package com.xfzbd.cqi.view.result;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.trello.rxlifecycle2.android.FragmentEvent;
@@ -47,8 +46,7 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
 
   public int mIntCategory = 0;
   @Inject protected PresenterResult mPresenterResult;
-  @BindView(R.id.text_input_layout) TextInputLayout mTextInputLayout;
-  @BindView(R.id.text_input_edit_text) TextInputEditText mTextInputEditText;
+  @BindView(R.id.keywords) EditText mKeywords;
   @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
   @BindView(R.id.filter_layout) FilterLayout mFilterLayout;
   private String mStrKeyword = "";
@@ -117,7 +115,7 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
     UIUtils.setCenterTitle(getActivity(), toolbar, "搜索结果")
         .setTextColor(getActivity().getResources().getColor(android.R.color.black));
 
-    mTextInputEditText.addTextChangedListener(new TextWatcher() {
+    mKeywords.addTextChangedListener(new TextWatcher() {
       @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
       }
 
@@ -125,6 +123,7 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
       }
 
       @Override public void afterTextChanged(Editable s) {
+
         mStrKeyword = s.toString();
         onFilterSure();
       }
