@@ -27,6 +27,12 @@
         android:background="@null"
         style="@style/Item"
         />
+
+    <com.xfzbd.cqi.widget.FlowLayout
+        android:id="@+id/flow_layout_keywords"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
   </LinearLayout>
 
   <com.xfzbd.cqi.widget.FilterLayout

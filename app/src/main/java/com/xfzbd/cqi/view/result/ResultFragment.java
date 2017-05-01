@@ -31,6 +31,7 @@ import com.xfzbd.cqi.presenter.PresenterResult;
 import com.xfzbd.cqi.view.UIUtils;
 import com.xfzbd.cqi.view.XFragment;
 import com.xfzbd.cqi.widget.FilterLayout;
+import com.xfzbd.cqi.widget.FlowLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -50,10 +51,12 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
   public int mIntCategory = 0;
   @Inject protected PresenterResult mPresenterResult;
   @BindView(R.id.keywords) EditText mKeywords;
+  @BindView(R.id.flow_layout_keywords) FlowLayout mFlowLayoutKeywords;
   @BindView(R.id.swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
   @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
   @BindView(R.id.filter_layout) FilterLayout mFilterLayout;
   private String mStrKeyword = "";
+  private List<String> mKeywordList = new ArrayList<>();
 
   private List<Product> mProductList = new ArrayList<>();
   private long mBackTime = 0L;

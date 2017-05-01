@@ -17,8 +17,10 @@ import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
+import java.util.List;
 import javax.inject.Inject;
 import org.greenrobot.greendao.query.QueryBuilder;
+import org.greenrobot.greendao.query.WhereCondition;
 
 /**
  * XGitHub
@@ -123,5 +125,34 @@ public class PresenterResult extends ContractResult.IPresenterResult {
     // like += String.format("%%%s%%", word);
     // }
     return String.format("%%%s%%", strKeyword);
+  }
+
+  private WhereCondition[] genWhereCondition(List<String> keywordLikeList) {
+    int size = keywordLikeList.size();
+    WhereCondition[] whereConditions = new WhereCondition[size * 14];
+
+    for (int i = 0; i < size; i++) {
+      whereConditions[i * 14 + 0] = ProductDao.Properties.ReportCode.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 1] = ProductDao.Properties.ProductName.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 2] = ProductDao.Properties.ProducerName.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 3] =
+          ProductDao.Properties.ProducerAddress.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 4] = ProductDao.Properties.Brand.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 5] = ProductDao.Properties.Type.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 6] = ProductDao.Properties.ProducerArea.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 7] =
+          ProductDao.Properties.ThirdPartPlatform.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 8] =
+          ProductDao.Properties.OnlineSellerWebsite.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 9] = ProductDao.Properties.Seller.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 10] =
+          ProductDao.Properties.SellerAddress.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 11] =
+          ProductDao.Properties.UnqualifiedItem.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 12] = ProductDao.Properties.Judge.like(keywordLikeList.get(i));
+      whereConditions[i * 14 + 13] = ProductDao.Properties.Dealing.like(keywordLikeList.get(i));
+    }
+
+    return whereConditions;
   }
 }
