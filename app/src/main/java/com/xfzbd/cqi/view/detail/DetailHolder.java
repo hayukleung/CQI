@@ -10,6 +10,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.xfzbd.cqi.R;
 import com.xfzbd.cqi.database.Product;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * XGitHub
@@ -42,25 +44,31 @@ public class DetailHolder extends RecyclerView.ViewHolder {
   public DetailHolder(View itemView, Product product) {
     super(itemView);
     ButterKnife.bind(this, itemView);
-    avoidEmpty(0, colReportCode);
-    avoidEmpty(1, colProductName);
-    avoidEmpty(2, colProducerName);
-    avoidEmpty(3, colProducerAddress);
-    avoidEmpty(4, colBrand);
-    avoidEmpty(5, colType);
-    avoidEmpty(6, colProducerArea);
-    avoidEmpty(7, colThirdPartPlatform);
-    avoidEmpty(8, colOnlineSeller);
-    avoidEmpty(9, colSeller);
-    avoidEmpty(10, colSellerAddress);
-    avoidEmpty(11, colUnqualifiedItem);
-    avoidEmpty(12, colJudge);
-    avoidEmpty(13, colDealing);
+    modify(0, colReportCode);
+    modify(1, colProductName);
+    modify(2, colProducerName);
+    modify(3, colProducerAddress);
+    modify(4, colBrand);
+    modify(5, colType);
+    modify(6, colProducerArea);
+    modify(7, colThirdPartPlatform);
+    modify(8, colOnlineSeller);
+    modify(9, colSeller);
+    modify(10, colSellerAddress);
+    modify(11, colUnqualifiedItem);
+    modify(12, colJudge);
+    modify(13, colDealing);
 
     mProduct = product;
   }
 
-  private void avoidEmpty(final int index, final EditText edit) {
+  /**
+   * 库表内容优化
+   *
+   * @param index
+   * @param edit
+   */
+  private void modify(final int index, final EditText edit) {
     edit.addTextChangedListener(new TextWatcher() {
       @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -120,19 +128,64 @@ public class DetailHolder extends RecyclerView.ViewHolder {
             break;
           }
           case 11: {
-            mProduct.setUnqualifiedItem(s.toString());
+            String before = s.toString();
+            String after = forMultiLines(s);
+            if (!after.equals(before)) {
+              edit.setText(after);
+            }
+            mProduct.setUnqualifiedItem(after);
             break;
           }
           case 12: {
-            mProduct.setJudge(s.toString());
+            String before = s.toString();
+            String after = forMultiLines(s);
+            if (!after.equals(before)) {
+              edit.setText(after);
+            }
+            mProduct.setJudge(after);
             break;
           }
           case 13: {
-            mProduct.setDealing(s.toString());
+            String before = s.toString();
+            String after = forMultiLines(s);
+            if (!after.equals(before)) {
+              edit.setText(after);
+            }
+            mProduct.setDealing(after);
             break;
           }
         }
       }
     });
+  }
+
+  /**
+   * from
+   *
+   * 1.xxxxxx2.xxxxxx3.xxxxxx...
+   *
+   * to
+   *
+   * 1.xxxxxx
+   * 2.xxxxxx
+   * 3.xxxxxx
+   * ...
+   *
+   * @param before
+   * @return
+   */
+  private String forMultiLines(Editable before) {
+    String after = before.toString().trim();
+    Pattern pattern = Pattern.compile("\\d.\\D");
+    Matcher matcher = pattern.matcher(after);
+    while (matcher.find()) {
+      String temp = matcher.group();
+      after = after.replace(temp, "\n" + temp);
+    }
+    if (after.startsWith("\n")) {
+      after = after.replaceFirst("\n", "");
+    }
+    after = after.replace("\n\n", "\n");
+    return after;
   }
 }

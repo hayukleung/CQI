@@ -1,6 +1,7 @@
 package com.xfzbd.cqi.view.result;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
@@ -12,6 +13,7 @@ import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.trello.rxlifecycle2.android.FragmentEvent;
@@ -54,6 +56,7 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
   private String mStrKeyword = "";
 
   private List<Product> mProductList = new ArrayList<>();
+  private long mBackTime = 0L;
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -175,6 +178,12 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
 
   @Override public boolean onBackPressed() {
     if (mFilterLayout.dismissCurrentFilter()) {
+      return true;
+    }
+    long time = SystemClock.elapsedRealtime();
+    if (time - mBackTime > 2000) {
+      Toast.makeText(getActivity(), "再按一次返回退出", Toast.LENGTH_SHORT).show();
+      mBackTime = time;
       return true;
     }
     return super.onBackPressed();
