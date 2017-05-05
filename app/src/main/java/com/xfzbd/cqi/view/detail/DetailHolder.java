@@ -146,12 +146,7 @@ public class DetailHolder extends RecyclerView.ViewHolder {
             break;
           }
           case 13: {
-            String before = s.toString();
-            String after = forMultiLines(s);
-            if (!after.equals(before)) {
-              edit.setText(after);
-            }
-            mProduct.setDealing(after);
+            mProduct.setDealing(s.toString());
             break;
           }
         }

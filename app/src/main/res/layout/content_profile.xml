@@ -33,7 +33,7 @@
       android:layout_above="@+id/search"
       android:layout_below="@+id/text_input_layout"
       >
-    <RadioGroup
+    <com.xfzbd.cqi.widget.XRadioGroup
         android:id="@+id/category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -214,7 +214,7 @@
           android:layout_height="wrap_content"
           android:text="@string/category_25"
           />
-    </RadioGroup>
+    </com.xfzbd.cqi.widget.XRadioGroup>
   </ScrollView>
 
   <Button

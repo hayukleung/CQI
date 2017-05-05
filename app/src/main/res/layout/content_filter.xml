@@ -10,15 +10,17 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       >
-    <RadioGroup
+    <com.xfzbd.cqi.widget.XRadioGroup
         android:id="@+id/category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/xp5.0"
+        android:paddingTop="@dimen/xp5.0"
         >
 
       <RadioButton
           android:id="@+id/category_00"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:checked="true"
           android:text="@string/category_00"
@@ -26,179 +28,179 @@
 
       <RadioButton
           android:id="@+id/category_01"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_01"
           />
 
       <RadioButton
           android:id="@+id/category_02"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_02"
           />
 
       <RadioButton
           android:id="@+id/category_03"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_03"
           />
 
       <RadioButton
           android:id="@+id/category_04"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_04"
           />
 
       <RadioButton
           android:id="@+id/category_05"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_05"
           />
 
       <RadioButton
           android:id="@+id/category_06"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_06"
           />
 
       <RadioButton
           android:id="@+id/category_07"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_07"
           />
 
       <RadioButton
           android:id="@+id/category_08"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_08"
           />
 
       <RadioButton
           android:id="@+id/category_09"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_09"
           />
 
       <RadioButton
           android:id="@+id/category_10"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_10"
           />
 
       <RadioButton
           android:id="@+id/category_11"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_11"
           />
 
       <RadioButton
           android:id="@+id/category_12"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_12"
           />
 
       <RadioButton
           android:id="@+id/category_13"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_13"
           />
 
       <RadioButton
           android:id="@+id/category_14"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_14"
           />
 
       <RadioButton
           android:id="@+id/category_15"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_15"
           />
 
       <RadioButton
           android:id="@+id/category_16"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_16"
           />
 
       <RadioButton
           android:id="@+id/category_17"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_17"
           />
 
       <RadioButton
           android:id="@+id/category_18"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_18"
           />
 
       <RadioButton
           android:id="@+id/category_19"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_19"
           />
 
       <RadioButton
           android:id="@+id/category_20"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_20"
           />
 
       <RadioButton
           android:id="@+id/category_21"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_21"
           />
 
       <RadioButton
           android:id="@+id/category_22"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_22"
           />
 
       <RadioButton
           android:id="@+id/category_23"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_23"
           />
 
       <RadioButton
           android:id="@+id/category_24"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_24"
           />
 
       <RadioButton
           android:id="@+id/category_25"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="@string/category_25"
           />
-    </RadioGroup>
+    </com.xfzbd.cqi.widget.XRadioGroup>
   </ScrollView>
 
 </FrameLayout>

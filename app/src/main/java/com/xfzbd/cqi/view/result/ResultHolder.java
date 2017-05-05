@@ -19,9 +19,13 @@ import com.xfzbd.cqi.R;
 public class ResultHolder extends RecyclerView.ViewHolder {
 
   @BindView(R.id.root) View root;
-  @BindView(R.id.product_name) TextView productName;
-  @BindView(R.id.producer_name) TextView producerName;
-  @BindView(R.id.brand) TextView brand;
+  @BindView(R.id.col_category) TextView colCategory;
+  @BindView(R.id.col_other) TextView colOther;
+
+  // @BindView(R.id.col_producer_name) TextView colProducerName;
+  // @BindView(R.id.col_brand) TextView colBrand;
+  // @BindView(R.id.col_type) TextView colType;
+  // @BindView(R.id.col_producer_area) TextView colProducerArea;
 
   public ResultHolder(View itemView) {
     super(itemView);

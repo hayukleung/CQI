@@ -12,6 +12,7 @@ import butterknife.BindView;
 import com.xfzbd.cqi.R;
 import com.xfzbd.cqi.common.CommonUtils;
 import com.xfzbd.cqi.view.XFragment;
+import com.xfzbd.cqi.widget.XRadioGroup;
 
 /**
  * CQI
@@ -50,13 +51,14 @@ public class FilterFragment extends XFragment {
   @BindView(R.id.category_23) RadioButton mCategory23;
   @BindView(R.id.category_24) RadioButton mCategory24;
   @BindView(R.id.category_25) RadioButton mCategory25;
-  @BindView(R.id.category) RadioGroup mCategory;
+  @BindView(R.id.category) XRadioGroup mCategory;
   @BindView(R.id.scroll_view) ScrollView mScrollView;
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    mCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+    mCategory.setOnCheckedChangeListener(new XRadioGroup.OnCheckedChangeListener() {
+
       @Override public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
         int pre = ((ResultFragment) getParentFragment()).mIntCategory;
         switch (checkedId) {

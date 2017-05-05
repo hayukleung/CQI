@@ -31,6 +31,7 @@ import com.xfzbd.cqi.view.UIUtils;
 import com.xfzbd.cqi.view.XFragment;
 import com.xfzbd.cqi.view.result.ResultFragment;
 import com.xfzbd.cqi.view.scan.ScanFragment;
+import com.xfzbd.cqi.widget.XRadioGroup;
 import javax.inject.Inject;
 
 /**
@@ -74,7 +75,7 @@ public class ProfileFragment extends XFragment<GitHub, ContractProfile.IPresente
   @BindView(R.id.category_23) RadioButton mCategory23;
   @BindView(R.id.category_24) RadioButton mCategory24;
   @BindView(R.id.category_25) RadioButton mCategory25;
-  @BindView(R.id.category) RadioGroup mCategory;
+  @BindView(R.id.category) XRadioGroup mCategory;
   @BindView(R.id.scroll_view) ScrollView mScrollView;
   @BindView(R.id.search) Button mSearch;
 
@@ -162,7 +163,7 @@ public class ProfileFragment extends XFragment<GitHub, ContractProfile.IPresente
       }
     });
 
-    mCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+    mCategory.setOnCheckedChangeListener(new XRadioGroup.OnCheckedChangeListener() {
       @Override public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
         switch (checkedId) {
           case R.id.category_01: {
