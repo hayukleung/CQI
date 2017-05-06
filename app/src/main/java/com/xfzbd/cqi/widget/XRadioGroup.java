@@ -196,7 +196,8 @@ public class XRadioGroup extends RadioGroup {
         }
       }
 
-      int gap = 1 < mTemp.size() ? mGapList.get(i) / (mTemp.size() - 1) : 0;
+      // int gap = 1 < mTemp.size() ? mGapList.get(i) / (mTemp.size() - 1) : 0;
+      int gap = 0;
 
       // 遍历当前行所有的View
       for (int j = 0; j < line.size(); j++) {
