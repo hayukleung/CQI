@@ -1,10 +1,16 @@
 package com.xfzbd.cqi.view.detail;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.xfzbd.cqi.R;
 import com.xfzbd.cqi.database.Product;
+
+import static com.xfzbd.cqi.common.wrapper.XImage.load;
+import static com.xfzbd.cqi.common.wrapper.XImage.url1;
+import static com.xfzbd.cqi.common.wrapper.XImage.url2;
+import static com.xfzbd.cqi.common.wrapper.XImage.url3;
 
 /**
  * XGitHub
@@ -17,9 +23,11 @@ import com.xfzbd.cqi.database.Product;
 
 public class DetailAdapter extends RecyclerView.Adapter<DetailHolder> {
 
+  private Context mContext;
   private Product mProduct;
 
-  public DetailAdapter(Product product) {
+  public DetailAdapter(Context context, Product product) {
+    mContext = context;
     mProduct = product;
   }
 
@@ -33,7 +41,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailHolder> {
         mProduct);
   }
 
-  @Override public void onBindViewHolder(DetailHolder holder, int position) {
+  @Override public void onBindViewHolder(final DetailHolder holder, int position) {
     holder.colReportCode.setText(mProduct.getReportCode());
     holder.colProductName.setText(mProduct.getProductName());
     holder.colProducerName.setText(mProduct.getProducerName());
@@ -48,6 +56,10 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailHolder> {
     holder.colUnqualifiedItem.setText(mProduct.getUnqualifiedItem());
     holder.colJudge.setText(mProduct.getJudge());
     holder.colDealing.setText(mProduct.getDealing());
+
+    load(mContext, url1(mProduct.getReportCode()), holder.colImage1);
+    load(mContext, url2(mProduct.getReportCode()), holder.colImage2);
+    load(mContext, url3(mProduct.getReportCode()), holder.colImage3);
   }
 
   @Override public int getItemCount() {

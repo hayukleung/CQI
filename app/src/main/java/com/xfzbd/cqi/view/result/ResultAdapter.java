@@ -11,6 +11,10 @@ import com.xfzbd.cqi.database.Product;
 import com.xfzbd.cqi.view.Activities;
 import com.xfzbd.cqi.view.detail.DetailFragment;
 import java.util.List;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
+
+import static com.xfzbd.cqi.common.wrapper.XImage.load;
+import static com.xfzbd.cqi.common.wrapper.XImage.url1;
 
 /**
  * XGitHub
@@ -58,6 +62,9 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultHolder> {
     // holder.colBrand.setText(product.getBrand());
     // holder.colType.setText(product.getType());
     // holder.colProducerArea.setText(product.getProducerArea());
+
+    load(mResultFragment.getActivity(), url1(product.getReportCode()), holder.colImage,
+        new CropCircleTransformation(mResultFragment.getActivity()));
   }
 
   @Override public int getItemCount() {

@@ -200,4 +200,32 @@
       android:layout_height="wrap_content"
       style="@style/Item"
       />
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/col_image"
+      style="@style/ItemTitle"
+      />
+
+  <ImageView
+      android:id="@+id/col_image_1"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/xp80.0"
+      style="@style/Item"
+      />
+
+  <ImageView
+      android:id="@+id/col_image_2"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/xp80.0"
+      style="@style/Item"
+      />
+
+  <ImageView
+      android:id="@+id/col_image_3"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/xp80.0"
+      style="@style/Item"
+      />
 </LinearLayout>

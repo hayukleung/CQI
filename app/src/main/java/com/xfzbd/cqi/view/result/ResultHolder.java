@@ -2,6 +2,7 @@ package com.xfzbd.cqi.view.result;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +22,7 @@ public class ResultHolder extends RecyclerView.ViewHolder {
   @BindView(R.id.root) View root;
   @BindView(R.id.col_category) TextView colCategory;
   @BindView(R.id.col_other) TextView colOther;
+  @BindView(R.id.col_image) ImageView colImage;
 
   // @BindView(R.id.col_producer_name) TextView colProducerName;
   // @BindView(R.id.col_brand) TextView colBrand;

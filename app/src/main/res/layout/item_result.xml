@@ -13,7 +13,6 @@
       android:layout_alignParentEnd="true"
       android:layout_centerVertical="true"
       android:padding="@dimen/xp2.0"
-      android:src="@mipmap/ic_launcher_round"
       />
 
   <TextView

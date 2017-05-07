@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.xfzbd.cqi.R;
@@ -38,6 +39,10 @@ public class DetailHolder extends RecyclerView.ViewHolder {
   @BindView(R.id.col_unqualified_item) EditText colUnqualifiedItem;
   @BindView(R.id.col_judge) EditText colJudge;
   @BindView(R.id.col_dealing) EditText colDealing;
+
+  @BindView(R.id.col_image_1) ImageView colImage1;
+  @BindView(R.id.col_image_2) ImageView colImage2;
+  @BindView(R.id.col_image_3) ImageView colImage3;
 
   private Product mProduct;
 
