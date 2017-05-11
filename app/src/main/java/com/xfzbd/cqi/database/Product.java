@@ -18,6 +18,8 @@ import org.greenrobot.greendao.annotation.Id;
   @Id(autoincrement = true) private long id;
   /** 类别 */
   private int category;
+  /** 类别名称 */
+  private String categoryName;
   /** 检验报告编号 */
   private String reportCode;
   /** 商品名称 */
@@ -46,14 +48,15 @@ import org.greenrobot.greendao.annotation.Id;
   private String judge;
   /** 处理情况 */
   private String dealing;
-  @Generated(hash = 1417859771)
-public Product(long id, int category, String reportCode, String productName,
-        String producerName, String producerAddress, String brand, String type,
-        String producerArea, String thirdPartPlatform,
-        String onlineSellerWebsite, String seller, String sellerAddress,
-        String unqualifiedItem, String judge, String dealing) {
+
+  @Generated(hash = 1901964349)
+  public Product(long id, int category, String categoryName, String reportCode, String productName,
+      String producerName, String producerAddress, String brand, String type, String producerArea,
+      String thirdPartPlatform, String onlineSellerWebsite, String seller, String sellerAddress,
+      String unqualifiedItem, String judge, String dealing) {
     this.id = id;
     this.category = category;
+    this.categoryName = categoryName;
     this.reportCode = reportCode;
     this.productName = productName;
     this.producerName = producerName;
@@ -167,5 +170,13 @@ public String getSellerAddress() {
 }
 public void setSellerAddress(String sellerAddress) {
     this.sellerAddress = sellerAddress;
+}
+
+  public String getCategoryName() {
+    return this.categoryName;
+  }
+
+  public void setCategoryName(String categoryName) {
+    this.categoryName = categoryName;
 }
 }

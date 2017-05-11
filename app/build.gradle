@@ -48,7 +48,7 @@ android {
 }
 
 greendao {
-  schemaVersion 2
+  schemaVersion 3
   daoPackage 'com.xfzbd.cqi.database'
   targetGenDir 'src/main/java'
 }
@@ -61,7 +61,7 @@ dependencies {
   // })
   // testCompile 'junit:junit:4.12'
   // google android libraries
-  compile 'com.android.support:appcompat-v7:25.3.0'
+  compile 'com.android.support:appcompat-v7:25.3.1'
   compile 'com.android.support:design:25.3.1'
   compile 'com.android.support:multidex:1.0.1'
   compile 'com.google.code.gson:gson:2.8.0'

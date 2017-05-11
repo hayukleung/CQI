@@ -20,30 +20,31 @@ public class ProductDao extends AbstractDao<Product, Long> {
         super(config);
     }
 
-  public ProductDao(DaoConfig config, DaoSession daoSession) {
+    public ProductDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
     }
 
-  /** Creates the underlying database table. */
+    /** Creates the underlying database table. */
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"PRODUCT\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: id
                 "\"CATEGORY\" INTEGER NOT NULL ," + // 1: category
-                "\"REPORT_CODE\" TEXT," + // 2: reportCode
-                "\"PRODUCT_NAME\" TEXT," + // 3: productName
-                "\"PRODUCER_NAME\" TEXT," + // 4: producerName
-                "\"PRODUCER_ADDRESS\" TEXT," + // 5: producerAddress
-                "\"BRAND\" TEXT," + // 6: brand
-                "\"TYPE\" TEXT," + // 7: type
-                "\"PRODUCER_AREA\" TEXT," + // 8: producerArea
-                "\"THIRD_PART_PLATFORM\" TEXT," + // 9: thirdPartPlatform
-                "\"ONLINE_SELLER_WEBSITE\" TEXT," + // 10: onlineSellerWebsite
-                "\"SELLER\" TEXT," + // 11: seller
-                "\"SELLER_ADDRESS\" TEXT," + // 12: sellerAddress
-                "\"UNQUALIFIED_ITEM\" TEXT," + // 13: unqualifiedItem
-                "\"JUDGE\" TEXT," + // 14: judge
-                "\"DEALING\" TEXT);"); // 15: dealing
+            "\"CATEGORY_NAME\" TEXT," + // 2: categoryName
+            "\"REPORT_CODE\" TEXT," + // 3: reportCode
+            "\"PRODUCT_NAME\" TEXT," + // 4: productName
+            "\"PRODUCER_NAME\" TEXT," + // 5: producerName
+            "\"PRODUCER_ADDRESS\" TEXT," + // 6: producerAddress
+            "\"BRAND\" TEXT," + // 7: brand
+            "\"TYPE\" TEXT," + // 8: type
+            "\"PRODUCER_AREA\" TEXT," + // 9: producerArea
+            "\"THIRD_PART_PLATFORM\" TEXT," + // 10: thirdPartPlatform
+            "\"ONLINE_SELLER_WEBSITE\" TEXT," + // 11: onlineSellerWebsite
+            "\"SELLER\" TEXT," + // 12: seller
+            "\"SELLER_ADDRESS\" TEXT," + // 13: sellerAddress
+            "\"UNQUALIFIED_ITEM\" TEXT," + // 14: unqualifiedItem
+            "\"JUDGE\" TEXT," + // 15: judge
+            "\"DEALING\" TEXT);"); // 16: dealing
     }
 
     /** Drops the underlying database table. */
@@ -52,126 +53,136 @@ public class ProductDao extends AbstractDao<Product, Long> {
         db.execSQL(sql);
     }
 
-  @Override public Product readEntity(Cursor cursor, int offset) {
-    Product entity = new Product( //
-        cursor.getLong(offset + 0), // id
-        cursor.getInt(offset + 1), // category
-        cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // reportCode
-        cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // productName
-        cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // producerName
-        cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // producerAddress
-        cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // brand
-        cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // type
-        cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // producerArea
-        cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // thirdPartPlatform
-        cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // onlineSellerWebsite
-        cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // seller
-        cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // sellerAddress
-        cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // unqualifiedItem
-        cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // judge
-        cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15) // dealing
-    );
-    return entity;
+    @Override public Product readEntity(Cursor cursor, int offset) {
+        Product entity = new Product( //
+            cursor.getLong(offset + 0), // id
+            cursor.getInt(offset + 1), // category
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // categoryName
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // reportCode
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // productName
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // producerName
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // producerAddress
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // brand
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // type
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // producerArea
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // thirdPartPlatform
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11),
+            // onlineSellerWebsite
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // seller
+            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // sellerAddress
+            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // unqualifiedItem
+            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15), // judge
+            cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16) // dealing
+        );
+        return entity;
     }
 
-  @Override public Long readKey(Cursor cursor, int offset) {
-    return cursor.getLong(offset + 0);
-  }
+    @Override public Long readKey(Cursor cursor, int offset) {
+        return cursor.getLong(offset + 0);
+    }
 
-  @Override public void readEntity(Cursor cursor, Product entity, int offset) {
-    entity.setId(cursor.getLong(offset + 0));
-    entity.setCategory(cursor.getInt(offset + 1));
-    entity.setReportCode(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-    entity.setProductName(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-    entity.setProducerName(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-    entity.setProducerAddress(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-    entity.setBrand(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-    entity.setType(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-    entity.setProducerArea(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-    entity.setThirdPartPlatform(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-    entity.setOnlineSellerWebsite(
-        cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
-    entity.setSeller(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
-    entity.setSellerAddress(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
-    entity.setUnqualifiedItem(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
-    entity.setJudge(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
-    entity.setDealing(cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15));
-  }
+    @Override public void readEntity(Cursor cursor, Product entity, int offset) {
+        entity.setId(cursor.getLong(offset + 0));
+        entity.setCategory(cursor.getInt(offset + 1));
+        entity.setCategoryName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setReportCode(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setProductName(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setProducerName(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setProducerAddress(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setBrand(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setType(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setProducerArea(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setThirdPartPlatform(
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setOnlineSellerWebsite(
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setSeller(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
+        entity.setSellerAddress(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
+        entity.setUnqualifiedItem(
+            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
+        entity.setJudge(cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15));
+        entity.setDealing(cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16));
+    }
 
-  @Override
+    @Override
     protected final void bindValues(DatabaseStatement stmt, Product entity) {
         stmt.clearBindings();
         stmt.bindLong(1, entity.getId());
         stmt.bindLong(2, entity.getCategory());
 
+        String categoryName = entity.getCategoryName();
+        if (categoryName != null) {
+            stmt.bindString(3, categoryName);
+        }
+
         String reportCode = entity.getReportCode();
         if (reportCode != null) {
-            stmt.bindString(3, reportCode);
+            stmt.bindString(4, reportCode);
         }
 
         String productName = entity.getProductName();
         if (productName != null) {
-            stmt.bindString(4, productName);
+            stmt.bindString(5, productName);
         }
 
-    String producerName = entity.getProducerName();
+        String producerName = entity.getProducerName();
         if (producerName != null) {
-            stmt.bindString(5, producerName);
+            stmt.bindString(6, producerName);
         }
 
-    String producerAddress = entity.getProducerAddress();
+        String producerAddress = entity.getProducerAddress();
         if (producerAddress != null) {
-            stmt.bindString(6, producerAddress);
+            stmt.bindString(7, producerAddress);
         }
 
-    String brand = entity.getBrand();
+        String brand = entity.getBrand();
         if (brand != null) {
-            stmt.bindString(7, brand);
+            stmt.bindString(8, brand);
         }
 
-    String type = entity.getType();
+        String type = entity.getType();
         if (type != null) {
-            stmt.bindString(8, type);
+            stmt.bindString(9, type);
         }
 
-    String producerArea = entity.getProducerArea();
+        String producerArea = entity.getProducerArea();
         if (producerArea != null) {
-            stmt.bindString(9, producerArea);
+            stmt.bindString(10, producerArea);
         }
 
-    String thirdPartPlatform = entity.getThirdPartPlatform();
+        String thirdPartPlatform = entity.getThirdPartPlatform();
         if (thirdPartPlatform != null) {
-            stmt.bindString(10, thirdPartPlatform);
+            stmt.bindString(11, thirdPartPlatform);
         }
 
-    String onlineSellerWebsite = entity.getOnlineSellerWebsite();
+        String onlineSellerWebsite = entity.getOnlineSellerWebsite();
         if (onlineSellerWebsite != null) {
-            stmt.bindString(11, onlineSellerWebsite);
+            stmt.bindString(12, onlineSellerWebsite);
         }
 
-    String seller = entity.getSeller();
+        String seller = entity.getSeller();
         if (seller != null) {
-            stmt.bindString(12, seller);
+            stmt.bindString(13, seller);
         }
 
-    String sellerAddress = entity.getSellerAddress();
+        String sellerAddress = entity.getSellerAddress();
         if (sellerAddress != null) {
-            stmt.bindString(13, sellerAddress);
+            stmt.bindString(14, sellerAddress);
         }
 
-    String unqualifiedItem = entity.getUnqualifiedItem();
+        String unqualifiedItem = entity.getUnqualifiedItem();
         if (unqualifiedItem != null) {
-            stmt.bindString(14, unqualifiedItem);
+            stmt.bindString(15, unqualifiedItem);
         }
 
-    String judge = entity.getJudge();
+        String judge = entity.getJudge();
         if (judge != null) {
-            stmt.bindString(15, judge);
+            stmt.bindString(16, judge);
         }
 
-    String dealing = entity.getDealing();
+        String dealing = entity.getDealing();
         if (dealing != null) {
-            stmt.bindString(16, dealing);
+            stmt.bindString(17, dealing);
         }
     }
 
@@ -181,74 +192,79 @@ public class ProductDao extends AbstractDao<Product, Long> {
         stmt.bindLong(1, entity.getId());
         stmt.bindLong(2, entity.getCategory());
 
-      String reportCode = entity.getReportCode();
+        String categoryName = entity.getCategoryName();
+        if (categoryName != null) {
+            stmt.bindString(3, categoryName);
+        }
+
+        String reportCode = entity.getReportCode();
         if (reportCode != null) {
-            stmt.bindString(3, reportCode);
+            stmt.bindString(4, reportCode);
         }
 
-      String productName = entity.getProductName();
+        String productName = entity.getProductName();
         if (productName != null) {
-            stmt.bindString(4, productName);
+            stmt.bindString(5, productName);
         }
 
-      String producerName = entity.getProducerName();
+        String producerName = entity.getProducerName();
         if (producerName != null) {
-            stmt.bindString(5, producerName);
+            stmt.bindString(6, producerName);
         }
 
-      String producerAddress = entity.getProducerAddress();
+        String producerAddress = entity.getProducerAddress();
         if (producerAddress != null) {
-            stmt.bindString(6, producerAddress);
+            stmt.bindString(7, producerAddress);
         }
 
-      String brand = entity.getBrand();
+        String brand = entity.getBrand();
         if (brand != null) {
-            stmt.bindString(7, brand);
+            stmt.bindString(8, brand);
         }
 
-      String type = entity.getType();
+        String type = entity.getType();
         if (type != null) {
-            stmt.bindString(8, type);
+            stmt.bindString(9, type);
         }
 
-      String producerArea = entity.getProducerArea();
+        String producerArea = entity.getProducerArea();
         if (producerArea != null) {
-            stmt.bindString(9, producerArea);
+            stmt.bindString(10, producerArea);
         }
 
-      String thirdPartPlatform = entity.getThirdPartPlatform();
+        String thirdPartPlatform = entity.getThirdPartPlatform();
         if (thirdPartPlatform != null) {
-            stmt.bindString(10, thirdPartPlatform);
+            stmt.bindString(11, thirdPartPlatform);
         }
 
-      String onlineSellerWebsite = entity.getOnlineSellerWebsite();
+        String onlineSellerWebsite = entity.getOnlineSellerWebsite();
         if (onlineSellerWebsite != null) {
-            stmt.bindString(11, onlineSellerWebsite);
+            stmt.bindString(12, onlineSellerWebsite);
         }
 
-      String seller = entity.getSeller();
+        String seller = entity.getSeller();
         if (seller != null) {
-            stmt.bindString(12, seller);
+            stmt.bindString(13, seller);
         }
 
-      String sellerAddress = entity.getSellerAddress();
+        String sellerAddress = entity.getSellerAddress();
         if (sellerAddress != null) {
-            stmt.bindString(13, sellerAddress);
+            stmt.bindString(14, sellerAddress);
         }
 
-      String unqualifiedItem = entity.getUnqualifiedItem();
+        String unqualifiedItem = entity.getUnqualifiedItem();
         if (unqualifiedItem != null) {
-            stmt.bindString(14, unqualifiedItem);
+            stmt.bindString(15, unqualifiedItem);
         }
 
-      String judge = entity.getJudge();
+        String judge = entity.getJudge();
         if (judge != null) {
-            stmt.bindString(15, judge);
+            stmt.bindString(16, judge);
         }
 
-      String dealing = entity.getDealing();
+        String dealing = entity.getDealing();
         if (dealing != null) {
-            stmt.bindString(16, dealing);
+            stmt.bindString(17, dealing);
         }
     }
      
@@ -267,7 +283,7 @@ public class ProductDao extends AbstractDao<Product, Long> {
         }
     }
 
-  @Override
+    @Override
     public boolean hasKey(Product entity) {
         throw new UnsupportedOperationException("Unsupported for entities with a non-null key");
     }
@@ -277,38 +293,42 @@ public class ProductDao extends AbstractDao<Product, Long> {
         return true;
     }
 
-  /**
-   * Properties of entity Product.<br/>
-   * Can be used for QueryBuilder and for referencing column names.
-   */
-  public static class Properties {
-    public final static Property Id = new Property(0, long.class, "id", true, "_id");
-    public final static Property Category =
-        new Property(1, int.class, "category", false, "CATEGORY");
-    public final static Property ReportCode =
-        new Property(2, String.class, "reportCode", false, "REPORT_CODE");
-    public final static Property ProductName =
-        new Property(3, String.class, "productName", false, "PRODUCT_NAME");
-    public final static Property ProducerName =
-        new Property(4, String.class, "producerName", false, "PRODUCER_NAME");
-    public final static Property ProducerAddress =
-        new Property(5, String.class, "producerAddress", false, "PRODUCER_ADDRESS");
-    public final static Property Brand = new Property(6, String.class, "brand", false, "BRAND");
-    public final static Property Type = new Property(7, String.class, "type", false, "TYPE");
-    public final static Property ProducerArea =
-        new Property(8, String.class, "producerArea", false, "PRODUCER_AREA");
-    public final static Property ThirdPartPlatform =
-        new Property(9, String.class, "thirdPartPlatform", false, "THIRD_PART_PLATFORM");
-    public final static Property OnlineSellerWebsite =
-        new Property(10, String.class, "onlineSellerWebsite", false, "ONLINE_SELLER_WEBSITE");
-    public final static Property Seller = new Property(11, String.class, "seller", false, "SELLER");
-    public final static Property SellerAddress =
-        new Property(12, String.class, "sellerAddress", false, "SELLER_ADDRESS");
-    public final static Property UnqualifiedItem =
-        new Property(13, String.class, "unqualifiedItem", false, "UNQUALIFIED_ITEM");
-    public final static Property Judge = new Property(14, String.class, "judge", false, "JUDGE");
-    public final static Property Dealing =
-        new Property(15, String.class, "dealing", false, "DEALING");
+    /**
+     * Properties of entity Product.<br/>
+     * Can be used for QueryBuilder and for referencing column names.
+     */
+    public static class Properties {
+        public final static Property Id = new Property(0, long.class, "id", true, "_id");
+        public final static Property Category =
+            new Property(1, int.class, "category", false, "CATEGORY");
+        public final static Property CategoryName =
+            new Property(2, String.class, "categoryName", false, "CATEGORY_NAME");
+        public final static Property ReportCode =
+            new Property(3, String.class, "reportCode", false, "REPORT_CODE");
+        public final static Property ProductName =
+            new Property(4, String.class, "productName", false, "PRODUCT_NAME");
+        public final static Property ProducerName =
+            new Property(5, String.class, "producerName", false, "PRODUCER_NAME");
+        public final static Property ProducerAddress =
+            new Property(6, String.class, "producerAddress", false, "PRODUCER_ADDRESS");
+        public final static Property Brand = new Property(7, String.class, "brand", false, "BRAND");
+        public final static Property Type = new Property(8, String.class, "type", false, "TYPE");
+        public final static Property ProducerArea =
+            new Property(9, String.class, "producerArea", false, "PRODUCER_AREA");
+        public final static Property ThirdPartPlatform =
+            new Property(10, String.class, "thirdPartPlatform", false, "THIRD_PART_PLATFORM");
+        public final static Property OnlineSellerWebsite =
+            new Property(11, String.class, "onlineSellerWebsite", false, "ONLINE_SELLER_WEBSITE");
+        public final static Property Seller =
+            new Property(12, String.class, "seller", false, "SELLER");
+        public final static Property SellerAddress =
+            new Property(13, String.class, "sellerAddress", false, "SELLER_ADDRESS");
+        public final static Property UnqualifiedItem =
+            new Property(14, String.class, "unqualifiedItem", false, "UNQUALIFIED_ITEM");
+        public final static Property Judge =
+            new Property(15, String.class, "judge", false, "JUDGE");
+        public final static Property Dealing =
+            new Property(16, String.class, "dealing", false, "DEALING");
     }
     
 }

@@ -38,6 +38,8 @@ import java.util.Locale;
 
 public class WelcomeActivity extends FullScreenActivity {
 
+  private static final int SIZE = 1198;
+
   private Handler mHandler;
   private ProgressBar mProgressBar;
   private TextView mPercentage;
@@ -67,7 +69,7 @@ public class WelcomeActivity extends FullScreenActivity {
     layoutParams.gravity = Gravity.CENTER;
     layoutParams.bottomMargin = 0;
     mProgressBar = new ProgressBar(this);
-    mProgressBar.setMax(954);
+    mProgressBar.setMax(SIZE);
     mProgressBar.setVisibility(View.GONE);
     mContent.addView(mProgressBar, layoutParams);
 
@@ -92,7 +94,7 @@ public class WelcomeActivity extends FullScreenActivity {
       @Override public void run() {
         XDao xDao = XDao.getInstance(WelcomeActivity.this.getApplicationContext());
         ProductDao productDao = xDao.getDaoSession().getProductDao();
-        if (1198 == productDao.count()) {
+        if (SIZE == productDao.count()) {
           mHandler.sendEmptyMessageDelayed(0, 1000);
           return;
         }
@@ -158,7 +160,7 @@ public class WelcomeActivity extends FullScreenActivity {
             welcomeActivity.mProgressBar.setProgress(msg.arg1);
             welcomeActivity.mProgressBar.setVisibility(View.VISIBLE);
             welcomeActivity.mPercentage.setText(
-                String.format(Locale.CHINA, "%.2f%%", ((float) msg.arg1) / 954f * 100f));
+                String.format(Locale.CHINA, "%.2f%%", ((float) msg.arg1) / (float) SIZE * 100f));
             welcomeActivity.mPercentage.setVisibility(View.VISIBLE);
             break;
           }

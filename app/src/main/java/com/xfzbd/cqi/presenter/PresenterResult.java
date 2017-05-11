@@ -47,6 +47,7 @@ public class PresenterResult extends ContractResult.IPresenterResult {
         String strKeywordLike = getStrKeyword(strKeyword);
         if (0 == intCategory) {
           queryBuilder.where(queryBuilder.or(ProductDao.Properties.ReportCode.like(strKeywordLike),
+              ProductDao.Properties.CategoryName.like(strKeywordLike),
               ProductDao.Properties.ProductName.like(strKeywordLike),
               ProductDao.Properties.ProducerName.like(strKeywordLike),
               ProductDao.Properties.ProducerAddress.like(strKeywordLike),
@@ -63,6 +64,7 @@ public class PresenterResult extends ContractResult.IPresenterResult {
         } else {
           queryBuilder.where(ProductDao.Properties.Category.eq(intCategory),
               queryBuilder.or(ProductDao.Properties.ReportCode.like(strKeywordLike),
+                  ProductDao.Properties.CategoryName.like(strKeywordLike),
                   ProductDao.Properties.ProductName.like(strKeywordLike),
                   ProductDao.Properties.ProducerName.like(strKeywordLike),
                   ProductDao.Properties.ProducerAddress.like(strKeywordLike),
@@ -129,36 +131,38 @@ public class PresenterResult extends ContractResult.IPresenterResult {
    */
   private WhereCondition[] genWhereConditionArray(String keyword) {
     int size = keyword.length();
-    WhereCondition[] whereConditions = new WhereCondition[size * 14];
+    WhereCondition[] whereConditions = new WhereCondition[size * 15];
 
     for (int i = 0; i < size; i++) {
-      whereConditions[i * 14 + 0] =
+      whereConditions[i * 15 + 0] =
           ProductDao.Properties.ReportCode.like(getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 1] =
+      whereConditions[i * 15 + 1] =
+          ProductDao.Properties.CategoryName.like(getStrKeyword(keyword.substring(i, i + 1)));
+      whereConditions[i * 15 + 2] =
           ProductDao.Properties.ProductName.like(getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 2] =
+      whereConditions[i * 15 + 3] =
           ProductDao.Properties.ProducerName.like(getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 3] =
+      whereConditions[i * 15 + 4] =
           ProductDao.Properties.ProducerAddress.like(getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 4] =
+      whereConditions[i * 15 + 5] =
           ProductDao.Properties.Brand.like(getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 5] =
+      whereConditions[i * 15 + 6] =
           ProductDao.Properties.Type.like(getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 6] =
+      whereConditions[i * 15 + 7] =
           ProductDao.Properties.ProducerArea.like(getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 7] =
+      whereConditions[i * 15 + 8] =
           ProductDao.Properties.ThirdPartPlatform.like(getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 8] = ProductDao.Properties.OnlineSellerWebsite.like(
+      whereConditions[i * 15 + 9] = ProductDao.Properties.OnlineSellerWebsite.like(
           getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 9] =
+      whereConditions[i * 15 + 10] =
           ProductDao.Properties.Seller.like(getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 10] =
+      whereConditions[i * 15 + 11] =
           ProductDao.Properties.SellerAddress.like(getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 11] =
+      whereConditions[i * 15 + 12] =
           ProductDao.Properties.UnqualifiedItem.like(getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 12] =
+      whereConditions[i * 15 + 13] =
           ProductDao.Properties.Judge.like(getStrKeyword(keyword.substring(i, i + 1)));
-      whereConditions[i * 14 + 13] =
+      whereConditions[i * 15 + 14] =
           ProductDao.Properties.Dealing.like(getStrKeyword(keyword.substring(i, i + 1)));
     }
 

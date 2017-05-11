@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.xfzbd.cqi.R;
 import com.xfzbd.cqi.common.CommonUtils;
-import com.xfzbd.cqi.database.Category;
 import com.xfzbd.cqi.database.Product;
 import com.xfzbd.cqi.view.Activities;
 import com.xfzbd.cqi.view.detail.DetailFragment;
@@ -55,9 +54,9 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultHolder> {
       holder.colCategory.setVisibility(View.GONE);
     } else {
       holder.colCategory.setVisibility(View.VISIBLE);
-      holder.colCategory.setText(Html.fromHtml(CommonUtils.color(mResultFragment.getActivity(),
-          Category.CATEGORY.get(product.getCategory()), mResultFragment.getStrKeyword(),
-          R.color.colorKeyword)));
+      holder.colCategory.setText(Html.fromHtml(
+          CommonUtils.color(mResultFragment.getActivity(), product.getCategoryName(),
+              mResultFragment.getStrKeyword(), R.color.colorKeyword)));
     }
     holder.colProducerName.setText(Html.fromHtml(
         CommonUtils.color(mResultFragment.getActivity(), product.getProducerName(),
