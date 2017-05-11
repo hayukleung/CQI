@@ -73,7 +73,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultHolder> {
             mResultFragment.getStrKeyword(), R.color.colorKeyword)));
 
     load(mResultFragment.getActivity(), url1(product.getReportCode()), holder.colImage,
-        new CropCircleTransformation(mResultFragment.getActivity()));
+        R.drawable.ic_image_stub_list, new CropCircleTransformation(mResultFragment.getActivity()));
   }
 
   @Override public int getItemCount() {

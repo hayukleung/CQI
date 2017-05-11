@@ -22,9 +22,9 @@
       android:layout_height="wrap_content"
       android:layout_toStartOf="@+id/col_image"
       android:maxLines="1"
-      android:paddingBottom="@dimen/xp2.0"
+      android:paddingBottom="@dimen/xp1.0"
       android:paddingStart="@dimen/xp4.0"
-      android:paddingTop="@dimen/xp2.0"
+      android:paddingTop="@dimen/xp1.0"
       android:textColor="@android:color/black"
       android:textSize="14sp"
       android:textStyle="bold"
@@ -50,6 +50,7 @@
       android:layout_below="@+id/col_category"
       android:layout_toStartOf="@+id/col_image"
       android:orientation="vertical"
+      android:paddingBottom="@dimen/xp1.0"
       android:paddingStart="@dimen/xp4.0"
       >
     <TextView
@@ -57,8 +58,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:paddingBottom="@dimen/xp2.0"
-        android:paddingTop="@dimen/xp2.0"
         android:textSize="12sp"
         />
 
@@ -67,8 +66,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:paddingBottom="@dimen/xp2.0"
-        android:paddingTop="@dimen/xp2.0"
         android:textSize="12sp"
         />
 
@@ -77,8 +74,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:paddingBottom="@dimen/xp2.0"
-        android:paddingTop="@dimen/xp2.0"
         android:textSize="12sp"
         />
 
@@ -87,8 +82,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:paddingBottom="@dimen/xp2.0"
-        android:paddingTop="@dimen/xp2.0"
         android:textSize="12sp"
         />
   </LinearLayout>

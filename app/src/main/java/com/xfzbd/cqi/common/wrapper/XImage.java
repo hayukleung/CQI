@@ -2,6 +2,7 @@ package com.xfzbd.cqi.common.wrapper;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.annotation.DrawableRes;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.Transformation;
@@ -9,7 +10,6 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
-import com.xfzbd.cqi.R;
 import com.xfzbd.cqi.common.Constants;
 
 /**
@@ -24,14 +24,17 @@ import com.xfzbd.cqi.common.Constants;
 public class XImage {
 
   /**
+   *
    * @param context
    * @param source
    * @param imageView
+   * @param placeHolder
    * @param transformations
    */
   public static void load(Context context, Object source, ImageView imageView,
+      @DrawableRes int placeHolder,
       Transformation<Bitmap>... transformations) {
-    load(context, source, imageView, new RequestListener<Object, GlideDrawable>() {
+    load(context, source, imageView, placeHolder, new RequestListener<Object, GlideDrawable>() {
       @Override public boolean onException(Exception e, Object model, Target<GlideDrawable> target,
           boolean isFirstResource) {
         return false;
@@ -48,6 +51,7 @@ public class XImage {
    * @param context
    * @param source may be Uri, String, File, ResourceId
    * @param imageView
+   * @param placeHolder
    * @param requestListener
    * @param transformations Crop - CropTransformation, CropCircleTransformation,
    * CropSquareTransformation, RoundedCornersTransformation
@@ -56,11 +60,11 @@ public class XImage {
    * Mask - MaskTransformation
    */
   public static void load(Context context, Object source, final ImageView imageView,
+      @DrawableRes int placeHolder,
       RequestListener<Object, GlideDrawable> requestListener,
       Transformation<Bitmap>... transformations) {
     Glide.with(context)
-        .load(source)
-        .bitmapTransform(transformations).placeholder(R.drawable.ic_image_stub_list)
+        .load(source).bitmapTransform(transformations).placeholder(placeHolder)
         .listener(requestListener)
         .into(imageView);
   }
@@ -69,20 +73,24 @@ public class XImage {
    * @param context
    * @param source
    * @param imageView
+   * @param placeHolder
    * @param requestListener
    */
   public static void load(Context context, Object source, ImageView imageView,
+      @DrawableRes int placeHolder,
       RequestListener<Object, GlideDrawable> requestListener) {
-    load(context, source, imageView, requestListener, new CenterCrop(context));
+    load(context, source, imageView, placeHolder, requestListener, new CenterCrop(context));
   }
 
   /**
    * @param context
    * @param source
    * @param imageView
+   * @param placeHolder
    */
-  public static void load(Context context, Object source, ImageView imageView) {
-    load(context, source, imageView, new RequestListener<Object, GlideDrawable>() {
+  public static void load(Context context, Object source, ImageView imageView,
+      @DrawableRes int placeHolder) {
+    load(context, source, imageView, placeHolder, new RequestListener<Object, GlideDrawable>() {
       @Override public boolean onException(Exception e, Object model, Target<GlideDrawable> target,
           boolean isFirstResource) {
         return false;

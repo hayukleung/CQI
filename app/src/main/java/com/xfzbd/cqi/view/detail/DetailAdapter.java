@@ -57,9 +57,12 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailHolder> {
     holder.colJudge.setText(mProduct.getJudge());
     holder.colDealing.setText(mProduct.getDealing());
 
-    load(mContext, url1(mProduct.getReportCode()), holder.colImage1);
-    load(mContext, url2(mProduct.getReportCode()), holder.colImage2);
-    load(mContext, url3(mProduct.getReportCode()), holder.colImage3);
+    load(mContext, url1(mProduct.getReportCode()), holder.colImage1,
+        R.drawable.ic_image_stub_detail);
+    load(mContext, url2(mProduct.getReportCode()), holder.colImage2,
+        R.drawable.ic_image_stub_detail);
+    load(mContext, url3(mProduct.getReportCode()), holder.colImage3,
+        R.drawable.ic_image_stub_detail);
   }
 
   @Override public int getItemCount() {
