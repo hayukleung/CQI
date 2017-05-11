@@ -60,8 +60,7 @@ public class XImage {
       Transformation<Bitmap>... transformations) {
     Glide.with(context)
         .load(source)
-        .bitmapTransform(transformations)
-        .placeholder(R.drawable.ic_image_stub)
+        .bitmapTransform(transformations).placeholder(R.drawable.ic_image_stub_list)
         .listener(requestListener)
         .into(imageView);
   }

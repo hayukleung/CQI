@@ -6,4 +6,6 @@
   <color name="colorBackground">#00000000</color>
   <color name="colorStatusBar">#00000000</color>
   <color name="colorText">#FF222222</color>
+
+  <color name="colorKeyword">#FFFF0000</color>
 </resources>

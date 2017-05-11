@@ -21,13 +21,13 @@ public class ResultHolder extends RecyclerView.ViewHolder {
 
   @BindView(R.id.root) View root;
   @BindView(R.id.col_category) TextView colCategory;
-  @BindView(R.id.col_other) TextView colOther;
+  // @BindView(R.id.col_other) TextView colOther;
   @BindView(R.id.col_image) ImageView colImage;
 
-  // @BindView(R.id.col_producer_name) TextView colProducerName;
-  // @BindView(R.id.col_brand) TextView colBrand;
-  // @BindView(R.id.col_type) TextView colType;
-  // @BindView(R.id.col_producer_area) TextView colProducerArea;
+  @BindView(R.id.col_producer_name) TextView colProducerName;
+  @BindView(R.id.col_brand) TextView colBrand;
+  @BindView(R.id.col_type) TextView colType;
+  @BindView(R.id.col_producer_area) TextView colProducerArea;
 
   public ResultHolder(View itemView) {
     super(itemView);

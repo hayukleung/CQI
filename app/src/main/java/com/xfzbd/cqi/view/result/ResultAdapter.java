@@ -2,10 +2,12 @@ package com.xfzbd.cqi.view.result;
 
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.xfzbd.cqi.R;
+import com.xfzbd.cqi.common.CommonUtils;
 import com.xfzbd.cqi.database.Category;
 import com.xfzbd.cqi.database.Product;
 import com.xfzbd.cqi.view.Activities;
@@ -53,15 +55,22 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultHolder> {
       holder.colCategory.setVisibility(View.GONE);
     } else {
       holder.colCategory.setVisibility(View.VISIBLE);
-      holder.colCategory.setText(Category.CATEGORY.get(product.getCategory()));
+      holder.colCategory.setText(Html.fromHtml(CommonUtils.color(mResultFragment.getActivity(),
+          Category.CATEGORY.get(product.getCategory()), mResultFragment.getStrKeyword(),
+          R.color.colorKeyword)));
     }
-    holder.colOther.setText(
-        String.format("%s\n%s\n%s\n%s", product.getProducerName(), product.getBrand(),
-            product.getType(), product.getProducerArea()));
-    // holder.colProducerName.setText(product.getProducerName());
-    // holder.colBrand.setText(product.getBrand());
-    // holder.colType.setText(product.getType());
-    // holder.colProducerArea.setText(product.getProducerArea());
+    holder.colProducerName.setText(Html.fromHtml(
+        CommonUtils.color(mResultFragment.getActivity(), product.getProducerName(),
+            mResultFragment.getStrKeyword(), R.color.colorKeyword)));
+    holder.colBrand.setText(Html.fromHtml(
+        CommonUtils.color(mResultFragment.getActivity(), product.getBrand(),
+            mResultFragment.getStrKeyword(), R.color.colorKeyword)));
+    holder.colType.setText(Html.fromHtml(
+        CommonUtils.color(mResultFragment.getActivity(), product.getType(),
+            mResultFragment.getStrKeyword(), R.color.colorKeyword)));
+    holder.colProducerArea.setText(Html.fromHtml(
+        CommonUtils.color(mResultFragment.getActivity(), product.getProducerArea(),
+            mResultFragment.getStrKeyword(), R.color.colorKeyword)));
 
     load(mResultFragment.getActivity(), url1(product.getReportCode()), holder.colImage,
         new CropCircleTransformation(mResultFragment.getActivity()));

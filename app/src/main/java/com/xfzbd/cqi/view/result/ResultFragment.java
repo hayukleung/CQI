@@ -58,9 +58,12 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
   @BindView(R.id.filter_layout) FilterLayout mFilterLayout;
   private String mStrKeyword = "";
   private List<String> mKeywordList = new ArrayList<>();
-
   private List<Product> mProductList = new ArrayList<>();
   private long mBackTime = 0L;
+
+  public String getStrKeyword() {
+    return mStrKeyword;
+  }
 
   @Override public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
