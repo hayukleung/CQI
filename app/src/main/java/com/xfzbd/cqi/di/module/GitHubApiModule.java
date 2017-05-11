@@ -1,5 +1,6 @@
 package com.xfzbd.cqi.di.module;
 
+import com.xfzbd.cqi.BuildConfig;
 import com.xfzbd.cqi.api.GitHubApi;
 import com.xfzbd.cqi.common.Constants;
 import dagger.Module;
@@ -17,6 +18,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -38,16 +40,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
   @Provides public GitHubApi providesGitHubApi() {
 
     // OkHttpClient
-    OkHttpClient.Builder builder =
-        new OkHttpClient.Builder().connectTimeout(60 * 1000, TimeUnit.MILLISECONDS)
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS);
-//    if (BuildConfig.DEBUG) {
-//      HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-//      loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-//      builder.interceptors().add(loggingInterceptor);
-//    }
+    OkHttpClient.Builder builder = new OkHttpClient.Builder().connectTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(30, TimeUnit.SECONDS)
+        .writeTimeout(30, TimeUnit.SECONDS);
+    if (BuildConfig.DEBUG) {
+      HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+      loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+      builder.interceptors().add(loggingInterceptor);
+    }
     TrustAnyTrustManager trustAnyTrustManager = new TrustAnyTrustManager();
     SSLContext sc = null;
     try {
@@ -85,6 +85,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
     }
   }
 
+  /**
+   * 信任 api.github.com
+   */
   private static class TrustGitHubHostnameVerifier implements HostnameVerifier {
 
     @Override public boolean verify(String hostname, SSLSession session) {

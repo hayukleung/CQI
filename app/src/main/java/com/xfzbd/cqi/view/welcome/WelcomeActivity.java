@@ -92,7 +92,7 @@ public class WelcomeActivity extends FullScreenActivity {
       @Override public void run() {
         XDao xDao = XDao.getInstance(WelcomeActivity.this.getApplicationContext());
         ProductDao productDao = xDao.getDaoSession().getProductDao();
-        if (954 == productDao.count()) {
+        if (1198 == productDao.count()) {
           mHandler.sendEmptyMessageDelayed(0, 1000);
           return;
         }

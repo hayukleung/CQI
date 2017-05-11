@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.widget.FrameLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.xfzbd.cqi.R;
 import com.xfzbd.cqi.common.wrapper.XLog;
 import com.xfzbd.cqi.di.module.GitHubApiModule;
@@ -38,6 +39,7 @@ public class XActivity extends BaseActivity {
   @Inject public GitHubApiModule mGitHubApiModule;
   private String mFragmentName;
   private ArrayList<Integer> mFragmentRecord = new ArrayList<>();
+  private Unbinder mUnbinder;
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     Intent intent = getIntent();
@@ -54,7 +56,7 @@ public class XActivity extends BaseActivity {
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_x);
-    ButterKnife.bind(this);
+    mUnbinder = ButterKnife.bind(this);
 
     BaseFragment fragment =
         (BaseFragment) getSupportFragmentManager().findFragmentByTag(getFragmentTag());
@@ -70,7 +72,6 @@ public class XActivity extends BaseActivity {
     }
 
     getAppComponent().inject(this);
-    ButterKnife.bind(this);
   }
 
   protected String getFragmentTag() {
@@ -86,6 +87,13 @@ public class XActivity extends BaseActivity {
 
   protected String getFragmentName() {
     return mFragmentName;
+  }
+
+  @Override protected void onDestroy() {
+    if (null != mUnbinder) {
+      mUnbinder.unbind();
+    }
+    super.onDestroy();
   }
 
   @Override protected void onSaveInstanceState(Bundle outState) {

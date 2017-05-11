@@ -34,6 +34,7 @@ import com.xfzbd.cqi.widget.FilterLayout;
 import com.xfzbd.cqi.widget.FlowLayout;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.inject.Inject;
 
 /**
@@ -94,12 +95,14 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
     mProductList.clear();
     mProductList.addAll(data.getProductList());
     mRecyclerView.getAdapter().notifyDataSetChanged();
+    mRecyclerView.scrollToPosition(0);
+    mFilterLayout.setName(String.format(Locale.CHINA, "%s（%d）", Category.CATEGORY.get(mIntCategory),
+        data.getProductList().size()));
   }
 
   @Override public void onFilterSure() {
     mPresenterResult.query(getActivity(), mStrKeyword, mIntCategory,
         bindUntilEvent(FragmentEvent.PAUSE));
-    mFilterLayout.setName(Category.CATEGORY.get(mIntCategory));
     mFilterLayout.dismissCurrentFilter();
   }
 

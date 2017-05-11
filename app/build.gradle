@@ -48,7 +48,7 @@ android {
 }
 
 greendao {
-  schemaVersion 1
+  schemaVersion 2
   daoPackage 'com.xfzbd.cqi.database'
   targetGenDir 'src/main/java'
 }
