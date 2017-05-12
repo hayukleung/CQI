@@ -13,7 +13,7 @@ import org.greenrobot.greendao.annotation.Id;
  * by hayukleung
  * at 2017-04-26 19:11
  */
-@Entity public class Product extends BaseBean {
+@Entity public final class Product extends BaseBean {
 
   @Id(autoincrement = true) private long id;
   /** 类别 */
@@ -71,106 +71,138 @@ import org.greenrobot.greendao.annotation.Id;
     this.unqualifiedItem = unqualifiedItem;
     this.judge = judge;
     this.dealing = dealing;
-}
-@Generated(hash = 1890278724)
-  public Product() {
   }
+
+  @Generated(hash = 1890278724) public Product() {
+  }
+
   public long getId() {
-      return this.id;
+    return this.id;
   }
+
   public void setId(long id) {
-      this.id = id;
+    this.id = id;
   }
+
   public int getCategory() {
-      return this.category;
+    return this.category;
   }
+
   public void setCategory(int category) {
-      this.category = category;
+    this.category = category;
   }
+
   public String getReportCode() {
-      return this.reportCode;
+    return this.reportCode;
   }
+
   public void setReportCode(String reportCode) {
-      this.reportCode = reportCode;
+    this.reportCode = reportCode;
   }
+
   public String getProductName() {
-      return this.productName;
+    return this.productName;
   }
+
   public void setProductName(String productName) {
-      this.productName = productName;
+    this.productName = productName;
   }
+
   public String getProducerName() {
-      return this.producerName;
+    return this.producerName;
   }
+
   public void setProducerName(String producerName) {
-      this.producerName = producerName;
+    this.producerName = producerName;
   }
+
   public String getProducerAddress() {
-      return this.producerAddress;
+    return this.producerAddress;
   }
+
   public void setProducerAddress(String producerAddress) {
-      this.producerAddress = producerAddress;
+    this.producerAddress = producerAddress;
   }
+
   public String getBrand() {
-      return this.brand;
+    return this.brand;
   }
+
   public void setBrand(String brand) {
-      this.brand = brand;
+    this.brand = brand;
   }
+
   public String getType() {
-      return this.type;
+    return this.type;
   }
+
   public void setType(String type) {
-      this.type = type;
+    this.type = type;
   }
+
   public String getSeller() {
-      return this.seller;
+    return this.seller;
   }
+
   public void setSeller(String seller) {
-      this.seller = seller;
+    this.seller = seller;
   }
+
   public String getUnqualifiedItem() {
-      return this.unqualifiedItem;
+    return this.unqualifiedItem;
   }
+
   public void setUnqualifiedItem(String unqualifiedItem) {
-      this.unqualifiedItem = unqualifiedItem;
+    this.unqualifiedItem = unqualifiedItem;
   }
+
   public String getJudge() {
-      return this.judge;
+    return this.judge;
   }
+
   public void setJudge(String judge) {
-      this.judge = judge;
+    this.judge = judge;
   }
+
   public String getDealing() {
-      return this.dealing;
+    return this.dealing;
   }
+
   public void setDealing(String dealing) {
-      this.dealing = dealing;
+    this.dealing = dealing;
   }
-public String getProducerArea() {
+
+  public String getProducerArea() {
     return this.producerArea;
-}
-public void setProducerArea(String producerArea) {
+  }
+
+  public void setProducerArea(String producerArea) {
     this.producerArea = producerArea;
-}
-public String getThirdPartPlatform() {
+  }
+
+  public String getThirdPartPlatform() {
     return this.thirdPartPlatform;
-}
-public void setThirdPartPlatform(String thirdPartPlatform) {
+  }
+
+  public void setThirdPartPlatform(String thirdPartPlatform) {
     this.thirdPartPlatform = thirdPartPlatform;
-}
-public String getOnlineSellerWebsite() {
+  }
+
+  public String getOnlineSellerWebsite() {
     return this.onlineSellerWebsite;
-}
-public void setOnlineSellerWebsite(String onlineSellerWebsite) {
+  }
+
+  public void setOnlineSellerWebsite(String onlineSellerWebsite) {
     this.onlineSellerWebsite = onlineSellerWebsite;
-}
-public String getSellerAddress() {
+  }
+
+  public String getSellerAddress() {
     return this.sellerAddress;
-}
-public void setSellerAddress(String sellerAddress) {
+  }
+
+  public void setSellerAddress(String sellerAddress) {
     this.sellerAddress = sellerAddress;
-}
+  }
 
   public String getCategoryName() {
     return this.categoryName;
@@ -178,5 +210,19 @@ public void setSellerAddress(String sellerAddress) {
 
   public void setCategoryName(String categoryName) {
     this.categoryName = categoryName;
-}
+  }
+
+  @Override public int hashCode() {
+    return (int) this.id;
+  }
+
+  @Override public boolean equals(Object obj) {
+    if (null == obj) {
+      return false;
+    }
+    if (!(obj instanceof Product)) {
+      return false;
+    }
+    return id == ((Product) obj).id;
+  }
 }

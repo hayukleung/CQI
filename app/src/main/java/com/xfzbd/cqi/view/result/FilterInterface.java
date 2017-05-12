@@ -13,8 +13,10 @@ public interface FilterInterface {
 
   /**
    * 确定过滤条件
+   *
+   * @param useDiffUtil 是否使用 DiffUtil
    */
-  void onFilterSure();
+  void onFilterSure(boolean useDiffUtil);
 
   /**
    * 退出

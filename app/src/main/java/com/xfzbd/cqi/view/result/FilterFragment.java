@@ -60,7 +60,8 @@ public class FilterFragment extends XFragment {
     mCategory.setOnCheckedChangeListener(new XRadioGroup.OnCheckedChangeListener() {
 
       @Override public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-        int pre = ((ResultFragment) getParentFragment()).mIntCategory;
+        ((ResultFragment) getParentFragment()).mIntCategoryNew =
+            ((ResultFragment) getParentFragment()).mIntCategory;
         switch (checkedId) {
           case R.id.category_00: {
             ((ResultFragment) getParentFragment()).mIntCategory = 0;
@@ -167,8 +168,9 @@ public class FilterFragment extends XFragment {
             break;
           }
         }
-        if (pre != ((ResultFragment) getParentFragment()).mIntCategory) {
-          ((FilterInterface) getParentFragment()).onFilterSure();
+        if (((ResultFragment) getParentFragment()).mIntCategoryNew
+            != ((ResultFragment) getParentFragment()).mIntCategory) {
+          ((FilterInterface) getParentFragment()).onFilterSure(false);
         }
       }
     });

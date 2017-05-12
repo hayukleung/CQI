@@ -54,4 +54,21 @@ public class CommonUtils {
     return string.replace(toColor, String.format(Locale.CHINA, "<font color='%d'>%s</font>",
         ContextCompat.getColor(context, colorRes), toColor));
   }
+
+  /**
+   * 判断两个字符串对象是否一致
+   *
+   * @param a
+   * @param b
+   * @return
+   */
+  public static boolean isStringTheSame(String a, String b) {
+    if (null != a && null != b && a.equals(b)) {
+      return true;
+    }
+    if (null == a && null == b) {
+      return true;
+    }
+    return false;
+  }
 }

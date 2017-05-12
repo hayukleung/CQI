@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +16,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import butterknife.BindView;
-import butterknife.OnClick;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 import com.xfzbd.cqi.R;
 import com.xfzbd.cqi.common.CommonUtils;
@@ -50,15 +50,17 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
     implements ResultView, HasComponent<ComponentResult>, FilterInterface {
 
   public int mIntCategory = 0;
+  public int mIntCategoryNew = 0;
   @Inject protected PresenterResult mPresenterResult;
   @BindView(R.id.keywords) EditText mKeywords;
   @BindView(R.id.flow_layout_keywords) FlowLayout mFlowLayoutKeywords;
   @BindView(R.id.swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
   @BindView(R.id.recycler_view) RecyclerView mRecyclerView;
   @BindView(R.id.filter_layout) FilterLayout mFilterLayout;
+  private boolean mUseDiffUtil = false;
   private String mStrKeyword = "";
-  private List<String> mKeywordList = new ArrayList<>();
   private List<Product> mProductList = new ArrayList<>();
+  private List<Product> mProductListNew = new ArrayList<>();
   private long mBackTime = 0L;
 
   public String getStrKeyword() {
@@ -82,7 +84,7 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
 
   @Override public void onResume() {
     super.onResume();
-    onFilterSure();
+    onFilterSure(false);
   }
 
   @Override protected int getContentView() {
@@ -95,15 +97,32 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
 
   @Override public void showContent(Result data) {
     super.showContent(data);
-    mProductList.clear();
-    mProductList.addAll(data.getProductList());
-    mRecyclerView.getAdapter().notifyDataSetChanged();
-    mRecyclerView.scrollToPosition(0);
+
+    if (mUseDiffUtil) {
+      mProductListNew.clear();
+      mProductListNew.addAll(data.getProductList());
+
+      DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(
+          new DiffUtilCallback(mIntCategory, mIntCategoryNew, mProductList, mProductListNew),
+          false);
+
+      diffResult.dispatchUpdatesTo(mRecyclerView.getAdapter());
+
+      mProductList.clear();
+      mProductList.addAll(mProductListNew);
+    } else {
+      mProductList.clear();
+      mProductList.addAll(data.getProductList());
+
+      mRecyclerView.getAdapter().notifyDataSetChanged();
+    }
+
     mFilterLayout.setName(String.format(Locale.CHINA, "%s（%d）", Category.CATEGORY.get(mIntCategory),
         data.getProductList().size()));
   }
 
-  @Override public void onFilterSure() {
+  @Override public void onFilterSure(boolean useDiffUtil) {
+    mUseDiffUtil = useDiffUtil;
     mPresenterResult.query(getActivity(), mStrKeyword, mIntCategory,
         bindUntilEvent(FragmentEvent.PAUSE));
     mFilterLayout.dismissCurrentFilter();
@@ -139,7 +158,7 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
       @Override public void afterTextChanged(Editable s) {
 
         mStrKeyword = s.toString();
-        onFilterSure();
+        onFilterSure(false);
       }
     });
 
@@ -171,7 +190,7 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
 
     mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
       @Override public void onRefresh() {
-        onFilterSure();
+        onFilterSure(false);
       }
     });
   }
@@ -207,9 +226,5 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
 
   @Override public void stopQueryLoading() {
     mSwipeRefreshLayout.setRefreshing(false);
-  }
-
-  @OnClick({ R.id.search }) void onClick() {
-    onFilterSure();
   }
 }

@@ -35,6 +35,12 @@ public class PresenterResult extends ContractResult.IPresenterResult {
   @Inject public PresenterResult() {
   }
 
+  /**
+   * @param context
+   * @param strKeyword
+   * @param intCategory
+   * @param lifecycleTransformer
+   */
   public void query(final Context context, final String strKeyword, final int intCategory,
       ObservableTransformer lifecycleTransformer) {
     Observable.create(new ObservableOnSubscribe<Result>() {

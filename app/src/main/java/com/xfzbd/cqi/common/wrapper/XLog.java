@@ -22,7 +22,7 @@ public class XLog {
         // default PRETTYLOGGER or use just init()
         .init(TAG)
         // default 2
-        .methodCount(3)
+        .methodCount(1)
         // default shown
         .hideThreadInfo()
         // default LogLevel.FULL

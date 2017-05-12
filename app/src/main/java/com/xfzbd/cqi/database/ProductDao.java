@@ -20,6 +20,7 @@ public class ProductDao extends AbstractDao<Product, Long> {
         super(config);
     }
 
+
     public ProductDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
     }

@@ -18,11 +18,13 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@null"
+        android:drawableLeft="@drawable/ic_search_black_24dp"
         android:drawablePadding="@dimen/xp4.0"
         android:drawableStart="@drawable/ic_search_black_24dp"
         android:gravity="center_vertical"
         android:hint="关键字搜索"
         android:maxLines="1"
+        android:paddingLeft="@dimen/xp6.0"
         android:paddingStart="@dimen/xp6.0"
         android:textColorHint="#aaaaaa"
         style="@style/Item"
@@ -63,17 +65,6 @@
         android:id="@+id/filter_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/search"
-        android:layout_width="@dimen/xp15.0"
-        android:layout_height="@dimen/xp15.0"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="@dimen/xp10.0"
-        android:layout_marginEnd="@dimen/xp10.0"
-        android:src="@drawable/ic_search_white_24dp"
-        android:visibility="gone"
         />
   </FrameLayout>
 </LinearLayout>
