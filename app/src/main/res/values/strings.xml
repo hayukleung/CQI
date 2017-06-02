@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">质检 DEMO</string>
+  <string name="app_name">质检助手</string>
 
   <string name="category_00">全部类别</string>
   <string name="category_01">汽车儿童安全坐椅</string>

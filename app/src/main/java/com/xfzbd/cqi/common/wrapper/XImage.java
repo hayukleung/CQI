@@ -13,14 +13,8 @@ import com.bumptech.glide.request.target.Target;
 import com.xfzbd.cqi.common.Constants;
 
 /**
- * XGitHub
- * com.hayukleung.xgithub.common.wrapper
- * XImage.java
- *
- * by hayukleung
- * at 2017-03-31 15:56
+ * Glide 方法封装
  */
-
 public class XImage {
 
   /**
@@ -109,6 +103,10 @@ public class XImage {
    * @param suffix
    * @return
    */
+  public static String url0(String suffix) {
+    return String.format("%s/%s.jpg", Constants.HOST_IMAGE, suffix);
+  }
+
   public static String url1(String suffix) {
     return String.format("%s/%s-001.jpg", Constants.HOST_IMAGE, suffix);
   }

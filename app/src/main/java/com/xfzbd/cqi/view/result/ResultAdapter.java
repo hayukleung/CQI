@@ -41,7 +41,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultHolder> {
         LayoutInflater.from(parent.getContext()).inflate(R.layout.item_result, parent, false));
   }
 
-  @Override public void onBindViewHolder(ResultHolder holder, int position) {
+  @Override public void onBindViewHolder(final ResultHolder holder, int position) {
     final Product product = mProductList.get(position);
     holder.root.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
@@ -61,10 +61,12 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultHolder> {
     holder.colProducerName.setText(
         fromHtml(color(mResultFragment.getActivity(), product.getProducerName(),
             mResultFragment.getStrKeyword(), R.color.colorKeyword)));
-    holder.colBrand.setText(fromHtml(color(mResultFragment.getActivity(), product.getBrand(),
-            mResultFragment.getStrKeyword(), R.color.colorKeyword)));
-    holder.colType.setText(fromHtml(color(mResultFragment.getActivity(), product.getType(),
-            mResultFragment.getStrKeyword(), R.color.colorKeyword)));
+    holder.colBrand.setText(fromHtml(
+        color(mResultFragment.getActivity(), product.getBrand(), mResultFragment.getStrKeyword(),
+            R.color.colorKeyword)));
+    holder.colType.setText(fromHtml(
+        color(mResultFragment.getActivity(), product.getType(), mResultFragment.getStrKeyword(),
+            R.color.colorKeyword)));
     holder.colProducerArea.setText(
         fromHtml(color(mResultFragment.getActivity(), product.getProducerArea(),
             mResultFragment.getStrKeyword(), R.color.colorKeyword)));
