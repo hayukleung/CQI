@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class TabManager {
   private static final String SAVE_MANAGER_TAB_CURRENT = "save_manager_tab_current";
-  private final ArrayList<TabInfo> mTabs = new ArrayList<TabInfo>();
+  private final ArrayList<TabInfo> mTabs = new ArrayList<>();
   private Context mContext;
   private FragmentManager mFragmentManager;
   private int mContainerId;

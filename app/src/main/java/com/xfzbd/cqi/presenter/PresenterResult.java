@@ -6,7 +6,7 @@ import com.xfzbd.cqi.common.wrapper.XLog;
 import com.xfzbd.cqi.contract.ContractResult;
 import com.xfzbd.cqi.database.ProductDao;
 import com.xfzbd.cqi.model.Result;
-import com.xfzbd.cqi.view.result.ResultView;
+import com.xfzbd.cqi.ui.result.ResultView;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;

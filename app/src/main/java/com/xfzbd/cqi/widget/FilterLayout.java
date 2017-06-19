@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.hayukleung.absolutescreenmatch.Screen;
 import com.xfzbd.cqi.R;
-import com.xfzbd.cqi.view.result.FilterFragment;
+import com.xfzbd.cqi.ui.result.FilterFragment;
 
 import static com.xfzbd.cqi.widget.TabManager.Animate.IN;
 import static com.xfzbd.cqi.widget.TabManager.Animate.OUT;
@@ -90,6 +90,14 @@ public class FilterLayout extends LinearLayout implements TabHost.OnTabChangeLis
   }
 
   public void setName(String name) {
+    // 必须事先在assets底下创建一fonts文件夹 并放入要使用的字体文件(.ttf)
+    // 并提供相对路径给createFromAsset()来创建Typeface对象
+    // Typeface fontFace = Typeface.createFromAsset(getContext().getAssets(), "fonts/Roboto-Black.ttf");
+    // Typeface fontFace = Typeface.createFromAsset(getContext().getAssets(), "fonts/FZHTK.TTF");
+    // 字体文件必须是true type font的格式(ttf)；
+    // 当使用外部字体却又发现字体没有变化的时候(以 Droid Sans代替)，通常是因为
+    // 这个字体android没有支持,而非你的程序发生了错误
+    // mCategory.setTypeface(fontFace);
     mCategory.setText(name);
   }
 

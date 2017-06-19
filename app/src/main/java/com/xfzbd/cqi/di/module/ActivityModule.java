@@ -1,7 +1,7 @@
 package com.xfzbd.cqi.di.module;
 
 import com.xfzbd.cqi.di.PerActivity;
-import com.xfzbd.cqi.view.BaseActivity;
+import com.xfzbd.cqi.ui.BaseActivity;
 import dagger.Module;
 import dagger.Provides;
 

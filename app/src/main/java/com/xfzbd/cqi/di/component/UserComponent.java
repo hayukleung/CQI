@@ -3,7 +3,7 @@ package com.xfzbd.cqi.di.component;
 import com.xfzbd.cqi.di.PerActivity;
 import com.xfzbd.cqi.di.module.ActivityModule;
 import com.xfzbd.cqi.di.module.UserModule;
-import com.xfzbd.cqi.view.BaseFragment;
+import com.xfzbd.cqi.ui.BaseFragment;
 import dagger.Component;
 
 /**

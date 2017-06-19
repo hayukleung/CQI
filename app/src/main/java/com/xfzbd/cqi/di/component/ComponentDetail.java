@@ -2,7 +2,7 @@ package com.xfzbd.cqi.di.component;
 
 import com.xfzbd.cqi.di.PerActivity;
 import com.xfzbd.cqi.di.module.ActivityModule;
-import com.xfzbd.cqi.view.detail.DetailFragment;
+import com.xfzbd.cqi.ui.detail.DetailFragment;
 import dagger.Component;
 
 /**

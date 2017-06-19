@@ -2,7 +2,7 @@ package com.xfzbd.cqi.di.component;
 
 import com.xfzbd.cqi.di.PerActivity;
 import com.xfzbd.cqi.di.module.ActivityModule;
-import com.xfzbd.cqi.view.profile.ProfileFragment;
+import com.xfzbd.cqi.ui.profile.ProfileFragment;
 import dagger.Component;
 
 /**

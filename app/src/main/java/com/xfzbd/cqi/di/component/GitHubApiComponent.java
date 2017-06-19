@@ -3,7 +3,7 @@ package com.xfzbd.cqi.di.component;
 import com.xfzbd.cqi.di.PerActivity;
 import com.xfzbd.cqi.di.module.ActivityModule;
 import com.xfzbd.cqi.di.module.GitHubApiModule;
-import com.xfzbd.cqi.view.BaseActivity;
+import com.xfzbd.cqi.ui.BaseActivity;
 import dagger.Component;
 
 /**

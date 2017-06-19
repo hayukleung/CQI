@@ -19,7 +19,7 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
 
-    <activity android:name="com.xfzbd.cqi.view.welcome.WelcomeActivity">
+    <activity android:name="com.xfzbd.cqi.ui.welcome.WelcomeActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -29,7 +29,7 @@
     </activity>
 
     <activity
-        android:name="com.xfzbd.cqi.view.XActivity"
+        android:name="com.xfzbd.cqi.ui.XActivity"
         android:windowSoftInputMode="stateHidden|adjustResize"/>
   </application>
 </manifest>
