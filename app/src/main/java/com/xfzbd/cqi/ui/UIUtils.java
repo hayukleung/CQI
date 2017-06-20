@@ -5,6 +5,7 @@ import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -34,8 +35,9 @@ public class UIUtils {
     titleView.setSingleLine();
     titleView.setEllipsize(TextUtils.TruncateAt.END);
     titleView.setText(title);
-    Toolbar.LayoutParams lp = new Toolbar.LayoutParams(-2, -1);
-    lp.gravity = 17;
+    Toolbar.LayoutParams lp = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT,
+        Toolbar.LayoutParams.WRAP_CONTENT);
+    lp.gravity = Gravity.CENTER;
     toolbar.addView(titleView, lp);
     return titleView;
   }

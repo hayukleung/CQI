@@ -51,7 +51,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultHolder> {
       }
     });
     if (0 != mResultFragment.mIntCategory) {
-      holder.colCategory.setVisibility(View.GONE);
+      holder.colCategory.setVisibility(View.INVISIBLE);
     } else {
       holder.colCategory.setVisibility(View.VISIBLE);
       holder.colCategory.setText(

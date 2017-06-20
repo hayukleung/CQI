@@ -3,6 +3,8 @@ package com.xfzbd.cqi.ui.result;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.util.DiffUtil;
@@ -20,6 +22,7 @@ import butterknife.BindView;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 import com.xfzbd.cqi.R;
 import com.xfzbd.cqi.common.CommonUtils;
+import com.xfzbd.cqi.common.wrapper.XLog;
 import com.xfzbd.cqi.contract.ContractResult;
 import com.xfzbd.cqi.database.Category;
 import com.xfzbd.cqi.database.Product;
@@ -47,6 +50,9 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
   public int mIntCategory = 0;
   public int mIntCategoryNew = 0;
   @Inject protected PresenterResult mPresenterResult;
+  @BindView(R.id.collapsing_toolbar_layout) CollapsingToolbarLayout mCollapsingToolbarLayout;
+  @BindView(R.id.app_bar_layout) AppBarLayout mAppBarLayout;
+  // @BindView(R.id.toolbar_result) Toolbar mToolbarResult;
   @BindView(R.id.keywords) EditText mKeywords;
   @BindView(R.id.flow_layout_keywords) FlowLayout mFlowLayoutKeywords;
   @BindView(R.id.swipe_refresh_layout) SwipeRefreshLayout mSwipeRefreshLayout;
@@ -88,6 +94,11 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
 
   @Override protected View.OnClickListener getRetryListener() {
     return null;
+  }
+
+  @Override protected Toolbar getToolbar() {
+    // return mToolbarResult;
+    return super.getToolbar();
   }
 
   @Override public void showContent(Result data) {
@@ -142,6 +153,19 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
 
     UIUtils.setCenterTitle(getActivity(), toolbar, "搜索结果")
         .setTextColor(ContextCompat.getColor(getActivity(), android.R.color.black));
+
+    mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+      @Override public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+        if (0 == verticalOffset) {
+          getToolbar().setVisibility(View.GONE);
+        } else if (getContext().getResources().getDimensionPixelOffset(R.dimen.xp10_0)
+            <= -verticalOffset) {
+          // getToolbar().setVisibility(View.VISIBLE);
+          getToolbar().setVisibility(View.GONE);
+        }
+        XLog.e("offset --> " + verticalOffset);
+      }
+    });
 
     mKeywords.addTextChangedListener(new TextWatcher() {
       @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -222,4 +246,9 @@ public class ResultFragment extends XFragment<Result, ContractResult.IPresenterR
   @Override public void stopQueryLoading() {
     mSwipeRefreshLayout.setRefreshing(false);
   }
+
+  // @OnTouch({ R.id.keywords }) public boolean onViewTouch() {
+  // CommonUtils.showInputMethod(getActivity(), mKeywords);
+  // return true;
+  // }
 }

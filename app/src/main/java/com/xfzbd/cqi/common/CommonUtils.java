@@ -31,6 +31,18 @@ public class CommonUtils {
     }
   }
 
+  public static void showInputMethod(Context context, View v) {
+    showInputMethod(context, v.getWindowToken());
+  }
+
+  public static void showInputMethod(Context context, IBinder token) {
+    InputMethodManager manager =
+        ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE));
+    if (manager != null) {
+      manager.showSoftInputFromInputMethod(token, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+  }
+
   /**
    * 给 string 里的 toColor 染色
    *

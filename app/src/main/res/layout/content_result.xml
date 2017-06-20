@@ -1,53 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:appCQI="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     >
 
-  <LinearLayout
+  <!--appGithub:elevation="0dp"-->
+  <android.support.design.widget.AppBarLayout
+      android:id="@+id/app_bar_layout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="@android:color/white"
-      android:orientation="vertical"
       >
 
-    <EditText
-        android:id="@+id/keywords"
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:id="@+id/collapsing_toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@null"
-        android:drawableLeft="@drawable/ic_search_black_24dp"
-        android:drawablePadding="@dimen/xp4.0"
-        android:drawableStart="@drawable/ic_search_black_24dp"
-        android:gravity="center_vertical"
-        android:hint="关键字搜索"
-        android:maxLines="1"
-        android:paddingLeft="@dimen/xp6.0"
-        android:paddingStart="@dimen/xp6.0"
-        android:textColorHint="#aaaaaa"
-        style="@style/Item"
-        />
+        android:layout_height="match_parent"
+        appCQI:contentScrim="@color/colorPrimary"
+        appCQI:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways"
+        >
+      <!--需要随列表上下滚动显示隐藏的区域-->
+      <!--scroll - 想滚动就必须设置这个。-->
+      <!--enterAlways - 实现quick return效果, 当向下移动时，立即显示View（比如Toolbar)。-->
+      <!--exitUntilCollapsed - 向上滚动时收缩View，但可以固定Toolbar一直在上面。-->
+      <!--enterAlwaysCollapsed - 当你的View已经设置minHeight属性又使用此标志时，你的View只能以最小高度进入，只有当滚动视图到达顶部时才扩大到完整高度。-->
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@android:color/white"
+          android:orientation="vertical"
+          appCQI:layout_collapseMode="parallax"
+          appCQI:layout_collapseParallaxMultiplier="0.0"
+          >
 
-    <com.xfzbd.cqi.widget.FlowLayout
-        android:id="@+id/flow_layout_keywords"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-  </LinearLayout>
+        <EditText
+            android:id="@+id/keywords"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@null"
+            android:drawableLeft="@drawable/ic_search_black_24dp"
+            android:drawablePadding="@dimen/xp4.0"
+            android:drawableStart="@drawable/ic_search_black_24dp"
+            android:gravity="center_vertical"
+            android:hint="关键字搜索"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/xp6.0"
+            android:paddingStart="@dimen/xp6.0"
+            android:textColorHint="#aaaaaa"
+            style="@style/Item"
+            />
 
-  <com.xfzbd.cqi.widget.FilterLayout
-      android:id="@+id/filter_layout"
-      android:layout_width="match_parent"
-      android:layout_height="@dimen/xp10.0"
-      android:layout_marginTop="1dp"
-      android:background="#FFF0F0F0"
-      />
+        <com.xfzbd.cqi.widget.FlowLayout
+            android:id="@+id/flow_layout_keywords"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <com.xfzbd.cqi.widget.FilterLayout
+            android:id="@+id/filter_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/xp10.0"
+            android:layout_marginTop="1dp"
+            android:background="#FFF0F0F0"
+            />
+      </LinearLayout>
+
+      <!--<android.support.v7.widget.Toolbar-->
+      <!--android:id="@+id/toolbar_result"-->
+      <!--android:layout_width="match_parent"-->
+      <!--android:layout_height="?attr/actionBarSize"-->
+      <!--android:background="#22000000"-->
+      <!--appCQI:contentInsetEnd="0dp"-->
+      <!--appCQI:contentInsetStart="0dp"-->
+      <!--appCQI:layout_collapseMode="pin"-->
+      <!--/>-->
+    </android.support.design.widget.CollapsingToolbarLayout>
+  </android.support.design.widget.AppBarLayout>
 
   <FrameLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      appCQI:layout_behavior="@string/appbar_scrolling_view_behavior"
       >
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
@@ -67,7 +101,8 @@
         android:layout_height="match_parent"
         />
   </FrameLayout>
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
+
 
 
 
