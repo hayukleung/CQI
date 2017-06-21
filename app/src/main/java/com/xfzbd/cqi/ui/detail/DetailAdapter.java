@@ -1,11 +1,15 @@
 package com.xfzbd.cqi.ui.detail;
 
-import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import com.xfzbd.cqi.R;
 import com.xfzbd.cqi.database.Product;
+import com.xfzbd.cqi.ui.Activities;
+import com.xfzbd.cqi.ui.photo.PhotoFragment;
+import java.util.ArrayList;
 
 import static com.xfzbd.cqi.common.wrapper.XImage.load;
 import static com.xfzbd.cqi.common.wrapper.XImage.url1;
@@ -13,20 +17,14 @@ import static com.xfzbd.cqi.common.wrapper.XImage.url2;
 import static com.xfzbd.cqi.common.wrapper.XImage.url3;
 
 /**
- * XGitHub
- * com.hayukleung.xgithub.view.star
- * StarAdapter.java
- *
- * by hayukleung
- * at 2017-04-07 12:26
+ * 详情数据适配器
  */
-
 public class DetailAdapter extends RecyclerView.Adapter<DetailHolder> {
 
-  private Context mContext;
+  private DetailFragment mContext;
   private Product mProduct;
 
-  public DetailAdapter(Context context, Product product) {
+  public DetailAdapter(DetailFragment context, Product product) {
     mContext = context;
     mProduct = product;
   }
@@ -57,12 +55,51 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailHolder> {
     holder.colJudge.setText(mProduct.getJudge());
     holder.colDealing.setText(mProduct.getDealing());
 
-    load(mContext, url1(mProduct.getReportCode()), holder.colImage1,
+    load(mContext.getActivity(), url1(mProduct.getReportCode()), holder.colImage1,
         R.drawable.ic_image_stub_detail);
-    load(mContext, url2(mProduct.getReportCode()), holder.colImage2,
+    load(mContext.getActivity(), url2(mProduct.getReportCode()), holder.colImage2,
         R.drawable.ic_image_stub_detail);
-    load(mContext, url3(mProduct.getReportCode()), holder.colImage3,
+    load(mContext.getActivity(), url3(mProduct.getReportCode()), holder.colImage3,
         R.drawable.ic_image_stub_detail);
+
+    holder.colImage1.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        ArrayList<String> urls = new ArrayList<>();
+        urls.add(url1(mProduct.getReportCode()));
+        urls.add(url2(mProduct.getReportCode()));
+        urls.add(url3(mProduct.getReportCode()));
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList(PhotoFragment.URLS, urls);
+        bundle.putInt(PhotoFragment.POSITION, 0);
+        Activities.startActivity(mContext, PhotoFragment.class, bundle);
+      }
+    });
+
+    holder.colImage2.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        ArrayList<String> urls = new ArrayList<>();
+        urls.add(url1(mProduct.getReportCode()));
+        urls.add(url2(mProduct.getReportCode()));
+        urls.add(url3(mProduct.getReportCode()));
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList(PhotoFragment.URLS, urls);
+        bundle.putInt(PhotoFragment.POSITION, 1);
+        Activities.startActivity(mContext, PhotoFragment.class, bundle);
+      }
+    });
+
+    holder.colImage3.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        ArrayList<String> urls = new ArrayList<>();
+        urls.add(url1(mProduct.getReportCode()));
+        urls.add(url2(mProduct.getReportCode()));
+        urls.add(url3(mProduct.getReportCode()));
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList(PhotoFragment.URLS, urls);
+        bundle.putInt(PhotoFragment.POSITION, 2);
+        Activities.startActivity(mContext, PhotoFragment.class, bundle);
+      }
+    });
   }
 
   @Override public int getItemCount() {

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+  <uk.co.senab.photoview.PhotoView
+      android:id="@+id/back_animation"
+      android:layout_width="160dp"
+      android:layout_height="160dp"
+      android:layout_gravity="center"
+      />
+  <uk.co.senab.photoview.PhotoView
+      android:id="@+id/animation"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="center"
+      />
+  <com.xfzbd.cqi.widget.RoundProgressBar
+      android:id="@+id/loading"
+      android:layout_width="80dp"
+      android:layout_height="80dp"
+      android:layout_gravity="center"
+      app:max="100"
+      app:roundColor="#C1C5CA"
+      app:roundProgressColor="#EFEFEF"
+      app:roundWidth="1dp"
+      app:textColor="@android:color/transparent"
+      app:textIsDisplayable="false"
+      app:style="FILL"
+      />
+</FrameLayout>

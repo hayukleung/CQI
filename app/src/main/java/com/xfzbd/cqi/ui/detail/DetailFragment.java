@@ -82,7 +82,7 @@ public class DetailFragment extends XFragment<Product, ContractDetail.IPresenter
         new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
     mRecyclerView.addItemDecoration(
         new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-    mRecyclerView.setAdapter(new DetailAdapter(getActivity(),
+    mRecyclerView.setAdapter(new DetailAdapter(this,
         (Product) getArguments().getSerializable(Product.class.getSimpleName())));
 
     mRecyclerView.setOnTouchListener(new View.OnTouchListener() {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!--仿iphone带进度的进度条，线程安全的View，可直接在线程中更新进度-->
+  <declare-styleable name="RoundProgressBar">
+    <attr format="color" name="roundColor"/>
+    <attr format="color" name="roundProgressColor"/>
+    <attr format="dimension" name="roundWidth"/>
+    <attr format="color" name="textColor"/>
+    <attr format="dimension" name="RPBtextSize"/>
+    <attr format="integer" name="max"/>
+    <attr format="boolean" name="textIsDisplayable"/>
+    <attr name="style">
+      <enum name="STROKE" value="0"/>
+      <enum name="FILL" value="1"/>
+    </attr>
+  </declare-styleable>
+</resources>

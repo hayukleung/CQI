@@ -86,6 +86,7 @@ dependencies {
   debugCompile 'im.dino:dbinspector:3.4.1@aar'
   compile 'com.orhanobut:logger:1.15'
   compile 'com.github.mabbas007:TagsEditText:v1.0.4'
+  compile 'com.github.chrisbanes.photoview:library:1.2.4'
   // debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
   // releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
   // testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
