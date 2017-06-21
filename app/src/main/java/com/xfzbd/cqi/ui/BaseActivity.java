@@ -2,7 +2,6 @@ package com.xfzbd.cqi.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.LayoutInflaterCompat;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.xfzbd.cqi.App;
 import com.xfzbd.cqi.di.component.AppComponent;
@@ -28,8 +27,8 @@ public class BaseActivity extends RxAppCompatActivity {
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
 
-    LayoutInflaterCompat.setFactory(getLayoutInflater(),
-        new FontLayoutInflaterFactory(this, getDelegate()));
+    // 字体设置
+    // LayoutInflaterCompat.setFactory(getLayoutInflater(), new FontLayoutInflaterFactory(this, getDelegate()));
 
     super.onCreate(savedInstanceState);
     getAppComponent().inject(this);
