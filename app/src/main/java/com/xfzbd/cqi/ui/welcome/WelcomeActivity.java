@@ -11,14 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
 import com.xfzbd.cqi.App;
+import com.xfzbd.cqi.BuildConfig;
 import com.xfzbd.cqi.R;
 import com.xfzbd.cqi.common.wrapper.XDao;
+import com.xfzbd.cqi.common.wrapper.XLog;
 import com.xfzbd.cqi.database.ProductDao;
 import com.xfzbd.cqi.ui.Activities;
 import com.xfzbd.cqi.ui.FullScreenActivity;
 import com.xfzbd.cqi.ui.result.ResultFragment;
 import com.xfzbd.cqi.widget.PercentageCircleView;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -30,7 +34,7 @@ import java.lang.ref.WeakReference;
  */
 public class WelcomeActivity extends FullScreenActivity {
 
-  private static final int SIZE = 1198;
+  private static final int SIZE = 1352;
 
   private Handler mHandler;
   private PercentageCircleView mProgressBar;
@@ -115,7 +119,9 @@ public class WelcomeActivity extends FullScreenActivity {
             if (line.startsWith("insert")) {
               database.execSQL(line);
               count++;
-              // XLog.e(count + " lines inserted.");
+              if (BuildConfig.DEBUG) {
+                XLog.e(count + " lines inserted.");
+              }
               int tempPercentage = (int) ((float) count * 10000f / (float) SIZE);
               if (tempPercentage > percentage || 10000 == tempPercentage) {
                 Message message = new Message();

@@ -127,8 +127,7 @@ public class PictureFragment extends XFragment {
             if (spinner != null && getActivity() != null) {
               spinner.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
               spinner.setVisibility(View.INVISIBLE);
-              Toast.makeText(PictureFragment.this.getActivity(), "获取图片失败", Toast.LENGTH_SHORT)
-                  .show();
+              Toast.makeText(getActivity(), "获取图片失败", Toast.LENGTH_SHORT).show();
             }
             return false;
           }
@@ -146,11 +145,9 @@ public class PictureFragment extends XFragment {
         })
         .into(new ProgressTarget<String, Bitmap>(lUrl, new BitmapImageViewTarget(photoView)) {
           @Override protected void onConnecting() {
-
           }
 
           @Override protected void onDownloaded() {
-
           }
 
           @Override protected void onDownloading(long bytesRead, long expectedLength) {
@@ -161,7 +158,6 @@ public class PictureFragment extends XFragment {
           }
 
           @Override protected void onDelivered() {
-
           }
         });
 
